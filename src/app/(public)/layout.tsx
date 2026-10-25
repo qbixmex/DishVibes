@@ -1,0 +1,43 @@
+import type { FC } from "react";
+import type { Metadata } from "next";
+import { Logo } from "./components/logo";
+import { MainNavigation } from "./components/main-navigation";
+import { SearchDish } from "./components/search-dish";
+import { Orders } from "./components/orders";
+import { SignInOut } from "./components/sign-in-out";
+import { ThemeSwitcher } from "./components/theme-switcher";
+import styles from "./layout.module.css";
+
+export const metadata: Metadata = {
+  title: "Dish Vibes",
+  description: "Restaurant application",
+};
+
+type Props = Readonly<LayoutProps<"/">>;
+
+const PublicLayout: FC<Props> = ({ children }) => {
+  return (
+    <div id={styles.layout}>
+      <header id={styles.header}>
+        <nav id={styles.topNav}>
+          <Logo />
+          <MainNavigation />
+          <SearchDish />
+          <Orders />
+          <SignInOut />
+          <ThemeSwitcher />
+        </nav>
+      </header>
+
+      <main id={styles.main}>
+        {children}
+      </main>
+
+      <footer id={styles.footer}>
+        <p>© 2026 Food Studio. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default PublicLayout;

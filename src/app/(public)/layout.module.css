@@ -1,0 +1,41 @@
+@reference "tailwindcss";
+
+#layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding-inline: --spacing(5);
+
+  @apply container;
+}
+
+#header {
+  flex-basis: 50px;
+}
+
+#topNav {
+  display: flex;
+  justify-content: space-between;
+  padding-block: --spacing(5);
+
+  @variant md {
+    padding-block: --spacing(8);
+  }
+
+  @variant lg {
+    padding-block: --spacing(10);
+  }
+
+  @variant 2xl {
+    padding-block: --spacing(12);
+  }
+}
+
+#main {
+  flex: 1;
+}
+
+#footer {
+  flex-basis: 50px;
+}

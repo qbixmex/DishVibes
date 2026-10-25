@@ -1,12 +1,6 @@
 import { FC } from "react";
-import type { Metadata } from "next";
-import { geistMono, geistSans } from "./fonts";
+import { montserrat, geistMono, geistSans } from "./fonts";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Dine Flow",
-  description: "A restaurant food application",
-};
 
 type Props = Readonly<LayoutProps<"/">>;
 
@@ -14,7 +8,7 @@ const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable} antialiased dark`}
     >
       <body>{children}</body>
     </html>
