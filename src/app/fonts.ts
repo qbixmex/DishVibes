@@ -1,17 +1,19 @@
-import { Montserrat, Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Open_Sans, Roboto_Mono} from "next/font/google";
 
 export const montserrat = Montserrat({
-  variable: "--font-montserrat",
+  variable: "--font-heading",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
-export const geistSans = Geist({
-  variable: "--font-geist-sans",
+export const openSans = Open_Sans({
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
-export const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+export const robotoMono = Roboto_Mono({
+  variable:'--font-mono',
+  subsets:['latin'],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
 });

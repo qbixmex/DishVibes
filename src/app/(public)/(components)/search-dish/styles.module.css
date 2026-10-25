@@ -1,1 +1,49 @@
-@reference "tailwindcss";
+@reference "#globals";
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.formGroup {
+  position: relative;
+  display: flex;
+  gap: --spacing(3);
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
+  padding-left: --spacing(8);
+  color: var(--color-gray-500);
+  font-style: italic;
+
+  @variant focus {
+    color: var(--color-primary);
+    font-weight: 600;
+    border: none;
+    @apply ring ring-primary;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: --spacing(2);
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  stroke: var(--color-gray-500);
+  stroke-width: 3px;
+}
+
+.searchErrors {
+  position: absolute;
+  bottom: calc(var(--spacing) * -8);
+}

@@ -17,9 +17,9 @@ type Props = Readonly<LayoutProps<"/">>;
 
 const PublicLayout: FC<Props> = ({ children }) => {
   return (
-    <div id={styles.layout}>
-      <header id={styles.header}>
-        <nav id={styles.topNav}>
+    <div className={styles.layout}>
+      <header className={styles.header}>
+        <nav className={styles.topNav}>
           <Logo />
           <MainNavigation />
           <SearchDish />
@@ -29,7 +29,7 @@ const PublicLayout: FC<Props> = ({ children }) => {
         </nav>
       </header>
 
-      <main id={styles.main}>
+      <main className={styles.main}>
         {children}
       </main>
 

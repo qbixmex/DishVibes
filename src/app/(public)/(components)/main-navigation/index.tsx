@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 export const MainNavigation: FC = () => {
   return (
-    <div id={styles.mainNavigation}>
+    <div className={styles.mainNavigation}>
       {links.map((link) => (
         <Link key={link.id} href={link.url}>
           { link.label }

@@ -1,6 +1,6 @@
 @reference "tailwindcss";
 
-#mainNavigation {
+.mainNavigation {
   display: flex;
   align-items: center;
   justify-content: start;
@@ -8,7 +8,7 @@
 
   a {
     text-transform: uppercase;
-    font-family: var(--font-montserrat) Arial, sans-serif;
+    font-family: var(--font-heading);
     font-weight: 900;
     transition: color 250ms ease-in-out;
 

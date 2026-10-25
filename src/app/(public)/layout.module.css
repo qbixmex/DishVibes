@@ -1,6 +1,6 @@
 @reference "tailwindcss";
 
-#layout {
+.layout {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
@@ -10,11 +10,11 @@
   @apply container;
 }
 
-#header {
+.header {
   flex-basis: 50px;
 }
 
-#topNav {
+.topNav {
   display: flex;
   justify-content: space-between;
   padding-block: --spacing(5);
@@ -32,10 +32,10 @@
   }
 }
 
-#main {
+.main {
   flex: 1;
 }
 
-#footer {
+.footer {
   flex-basis: 50px;
 }

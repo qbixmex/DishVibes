@@ -1,12 +1,12 @@
 import type { FC } from "react";
 import { Utensils } from "lucide-react";
-import styles from "./styles.module.css";
 import Link from "next/link";
+import styles from "./styles.module.css";
 
 export const Logo: FC = () => {
   return (
     <Link href="/" title="Go to home">
-      <div id={styles.logo}>
+      <div className={styles.logo}>
         <figure>
           <Utensils />
         </figure>
