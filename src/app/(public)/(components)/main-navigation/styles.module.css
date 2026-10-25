@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+
+#mainNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: --spacing(4);
+
+  a {
+    text-transform: uppercase;
+    font-family: var(--font-montserrat) Arial, sans-serif;
+    font-weight: 900;
+    transition: color 250ms ease-in-out;
+
+    @variant hover {
+      color: var(--color-orange-500);
+    }
+  }
+}

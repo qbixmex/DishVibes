@@ -1,11 +1,11 @@
 import type { FC } from "react";
 import type { Metadata } from "next";
-import { Logo } from "./components/logo";
-import { MainNavigation } from "./components/main-navigation";
-import { SearchDish } from "./components/search-dish";
-import { Orders } from "./components/orders";
-import { SignInOut } from "./components/sign-in-out";
-import { ThemeSwitcher } from "./components/theme-switcher";
+import { Logo } from "./(components)/logo";
+import { MainNavigation } from "./(components)/main-navigation";
+import { SearchDish } from "./(components)/search-dish";
+import { Orders } from "./(components)/orders";
+import { SignInOut } from "./(components)/sign-in-out";
+import { ThemeSwitcher } from "./(components)/theme-switcher";
 import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
