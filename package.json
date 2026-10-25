@@ -1,6 +1,6 @@
 {
-  "name": "dine_flow",
-  "version": "0.0.0",
+  "name": "dish_vibes",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -32,5 +32,8 @@
   "trustedDependencies": [
     "sharp",
     "unrs-resolver"
-  ]
+  ],
+  "imports": {
+    "#globals": "./src/app/globals.css"
+  }
 }
