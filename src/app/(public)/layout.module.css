@@ -31,7 +31,7 @@
 
   .columnRight {
     display: flex;
-    gap: --spacing(8);
+    gap: --spacing(5);
   }
 
   @variant md {

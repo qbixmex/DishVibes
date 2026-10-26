@@ -7,6 +7,7 @@ import { Orders } from "./(components)/orders";
 import { SignInOut } from "./(components)/sign-in-out";
 import { ThemeSwitcher } from "./(components)/theme-switcher";
 import styles from "./layout.module.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Dish Vibes",
@@ -17,30 +18,32 @@ type Props = Readonly<LayoutProps<"/">>;
 
 const PublicLayout: FC<Props> = ({ children }) => {
   return (
-    <div className={styles.layout}>
-      <header className={styles.header}>
-        <nav className={styles.topNav}>
-          <div className={styles.columnLeft}>
-            <Logo />
-            <MainNavigation />
-          </div>
-          <div className={styles.columnRight}>
-            <SearchDish />
-            <Orders />
-            <SignInOut />
-            <ThemeSwitcher />
-          </div>
-        </nav>
-      </header>
+    <Providers>
+      <div className={styles.layout}>
+        <header className={styles.header}>
+          <nav className={styles.topNav}>
+            <div className={styles.columnLeft}>
+              <Logo />
+              <MainNavigation />
+            </div>
+            <div className={styles.columnRight}>
+              <SearchDish />
+              <Orders />
+              <SignInOut />
+              <ThemeSwitcher />
+            </div>
+          </nav>
+        </header>
 
-      <main className={styles.main}>
-        {children}
-      </main>
+        <main className={styles.main}>
+          {children}
+        </main>
 
-      <footer id={styles.footer}>
-        <p>© 2026 Food Studio. All rights reserved.</p>
-      </footer>
-    </div>
+        <footer id={styles.footer}>
+          <p>© 2026 Food Studio. All rights reserved.</p>
+        </footer>
+      </div>
+    </Providers>
   );
 }
 

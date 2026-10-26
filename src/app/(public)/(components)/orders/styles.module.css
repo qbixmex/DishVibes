@@ -5,17 +5,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-inline: --spacing(2);
 }
 
 .orderQuantity {
   position: absolute;
   display: grid;
   place-content: center;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   background-color: var(--color-red-500);
   top: calc(var(--spacing) * -1);
-  right: calc(var(--spacing) * -5);
+  right: calc(var(--spacing) * -4);
   border-radius: 50%;
   font-size: 14px;
   font-weight: 600;

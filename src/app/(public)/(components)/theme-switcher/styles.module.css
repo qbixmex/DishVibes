@@ -1,1 +1,37 @@
-@reference "tailwindcss";
+@reference "#globals";
+
+.themeSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightIcon,
+.darkIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.lightIcon {
+  position: absolute;
+  z-index: 1;
+  opacity: 100%;
+
+  @variant dark {
+    opacity: 0%;
+    z-index: 0;
+  }
+
+  @apply dark:-rotate-90;
+}
+
+.darkIcon {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+
+  @variant dark {
+    opacity: 100%;
+    z-index: 0;
+  }
+}

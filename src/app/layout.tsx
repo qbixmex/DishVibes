@@ -6,7 +6,6 @@ import "./globals.css";
 
 const cssClasses = [
   "antialiased",
-  "dark",
   "font-sans",
   montserrat.variable,
   openSans.variable,
@@ -20,6 +19,7 @@ const RootLayout: FC<Props> = ({ children }) => {
     <html
       lang="es"
       className={cn(cssClasses)}
+      suppressHydrationWarning
     >
       <body>
         <TooltipProvider>{children}</TooltipProvider>

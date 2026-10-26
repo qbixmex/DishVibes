@@ -1,4 +1,4 @@
-@reference "tailwindcss";
+@reference "#globals";
 
 .logo {
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 
   figure {
-    background-color: var(--color-primary);
+    background-color: var(--color-orange-600);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -14,10 +14,14 @@
     place-content: center;
 
     svg {
-      width: 32px;
-      height: 32px;
-      stroke: var(--color-orange-950);
+      width: 28px;
+      height: 28px;
+      stroke: var(--color-orange-50);
       stroke-width: 2.5px;
+
+      @variant dark {
+        stroke: var(--color-orange-950);
+      }
     }
   }
 
@@ -26,5 +30,13 @@
     font-size: var(--text-xl);
     font-weight: 900;
     text-transform: uppercase;
+  }
+}
+
+.currentPath {
+  color: var(--color-orange-600);
+
+  @variant dark {
+    color: var(--color-orange-500);
   }
 }
