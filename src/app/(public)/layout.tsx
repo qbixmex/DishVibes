@@ -20,12 +20,16 @@ const PublicLayout: FC<Props> = ({ children }) => {
     <div className={styles.layout}>
       <header className={styles.header}>
         <nav className={styles.topNav}>
-          <Logo />
-          <MainNavigation />
-          <SearchDish />
-          <Orders />
-          <SignInOut />
-          <ThemeSwitcher />
+          <div className={styles.columnLeft}>
+            <Logo />
+            <MainNavigation />
+          </div>
+          <div className={styles.columnRight}>
+            <SearchDish />
+            <Orders />
+            <SignInOut />
+            <ThemeSwitcher />
+          </div>
         </nav>
       </header>
 

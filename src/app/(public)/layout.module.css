@@ -19,6 +19,21 @@
   justify-content: space-between;
   padding-block: --spacing(5);
 
+  .columnLeft,
+  .columnRight {
+    display: flex;
+  }
+
+  .columnLeft {
+    display: flex;
+    gap: --spacing(10);
+  }
+
+  .columnRight {
+    display: flex;
+    gap: --spacing(8);
+  }
+
   @variant md {
     padding-block: --spacing(8);
   }

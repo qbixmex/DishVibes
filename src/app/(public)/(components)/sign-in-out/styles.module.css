@@ -1,1 +1,21 @@
 @reference "tailwindcss";
+
+.signInOut {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+  a {
+		background-color: var(--color-primary);
+		color: var(--color-orange-50);
+		border-radius: var(--radius-md);
+		padding-block: --spacing(2);
+		padding-inline: --spacing(4);
+    transition: background-color 250ms ease-in-out;
+
+    @variant hover {
+      color: var(--color-orange-100);
+      background-color: --alpha(var(--color-primary) / 50%);
+    }
+	}
+}
