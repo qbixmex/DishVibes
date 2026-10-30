@@ -9,6 +9,7 @@ import { ThemeSwitcher } from "./(components)/theme-switcher";
 import styles from "./layout.module.css";
 import { Providers } from "./providers";
 import { MobileMenu } from "./(components)/main-navigation/mobile-menu";
+import { FooterSection } from "./(components)/footer-section";
 
 export const metadata: Metadata = {
   title: "Dish Vibes",
@@ -42,7 +43,7 @@ const PublicLayout: FC<Props> = ({ children }) => {
         </main>
 
         <footer id={styles.footer}>
-          <p>© 2026 Food Studio. All rights reserved.</p>
+          <FooterSection />
         </footer>
       </div>
     </Providers>

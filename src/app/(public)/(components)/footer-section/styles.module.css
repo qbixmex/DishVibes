@@ -1,0 +1,90 @@
+@reference "#globals";
+
+.footer {
+  margin-inline: auto;
+  padding-block: --spacing(10);
+  border-top: solid 1px var(--color-border);
+
+  @apply container;
+
+  .grid {
+		display: grid;
+		grid-template-columns: minmax(200px, 1fr);
+    margin-bottom: --spacing(10);
+    gap: --spacing(5);
+
+    @variant md {
+			grid-template-columns: repeat(2, minmax(200px, 1fr));
+		}
+
+    @variant lg {
+      gap: 0;
+			grid-template-columns: repeat(5, minmax(200px, 1fr));
+		}
+
+    .heading {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      margin-bottom: --spacing(2);
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: --spacing(1);
+
+      a {
+        color: var(--color-gray-400);
+        font-family: var(--font-sans);
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    .columnA {
+      display: flex;
+      flex-direction: column;
+      gap: --spacing(5);
+
+      .slogan {
+        color: var(--color-gray-300);
+        font-style: italic;
+      }
+
+      .contactData {
+        display: flex;
+        gap: --spacing(5);
+
+        svg {
+          color: var(--color-primary);
+        }
+
+        span {
+          color: var(--color-gray-400);
+        }
+      }
+    }
+
+    .columnB { display: flex; flex-direction: column; } /* <- Just for not leave empty */
+    .columnC { display: flex; flex-direction: column; } /* <- Just for not leave empty */
+    .columnD { display: flex; flex-direction: column; } /* <- Just for not leave empty */
+
+    .columnE {
+      .socialLink {
+        display: flex;
+        align-items: center;
+        gap: --spacing(2);
+        font-style: italic;
+      }
+    }
+	}
+
+  .copyright {
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--color-gray-500);
+  }
+}
