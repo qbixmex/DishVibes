@@ -18,7 +18,7 @@ export const MainNavigation: FC = () => {
           href={link.url}
           className={cn({ 'text-primary': link.url === path })}
         >
-          { link.label }
+          {link.label}
         </Link>
       ))}
     </div>

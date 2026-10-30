@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'desserts')?.id ?? '';
+
+export const desserts: Dish[] = [
+  {
+    id: '1143ac9a-6750-4926-9a5e-42753649f4af',
+    name: 'Apple Pie Slice',
+    slug: 'apple-pie-slice',
+    description: 'A warm slice of buttery shortcrust pie filled with cinnamon-spiced apple chunks, finished with a caramel drizzle and a dusting of sugar.',
+    imageUrl: '/images/desserts/apple-pie-slice.jpg',
+    price: 5.50,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: '73db3eb9-fb1d-410d-8598-d33ea7d97608',
+    name: 'New York Cheesecake Slice',
+    slug: 'new-york-cheesecake-slice',
+    description: 'A thick, velvety slice of baked cream cheese cheesecake on a golden biscuit crumb base, topped with a glossy strawberry compote.',
+    imageUrl: '/images/desserts/new-york-cheesecake-slice.jpg',
+    price: 6.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '3a552a11-0f5b-4f46-8ea6-95ee22c92765',
+    name: 'Chocolate Fudge Cake Slice',
+    slug: 'chocolate-fudge-cake-slice',
+    description: 'A generous slice of moist chocolate sponge layered with rich fudge frosting, topped with chocolate shavings and a hint of sea salt.',
+    imageUrl: '/images/desserts/chocolate-fudge-cake-slice.jpg',
+    price: 6.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '3f67393a-dae0-4dfa-800b-7c8efd333520',
+    name: 'Chocolate Ice Cream',
+    slug: 'chocolate-ice-cream',
+    description: 'Two scoops of smooth, intensely chocolatey ice cream made with real cocoa, served in a chilled bowl with chocolate flakes.',
+    imageUrl: '/images/desserts/chocolate-ice-cream.jpg',
+    price: 4.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '1337bb4c-95cf-49a1-93b0-1586ff551a68',
+    name: 'Vanilla Ice Cream',
+    slug: 'vanilla-ice-cream',
+    description: 'Two scoops of creamy vanilla bean ice cream, churned slowly for a silky texture and served with a crisp wafer.',
+    imageUrl: '/images/desserts/vanilla-ice-cream.jpg',
+    price: 4.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'a16fc33c-1f4a-4e09-955e-d1dd8e4a6244',
+    name: 'Pineapple Jelly',
+    slug: 'pineapple-jelly',
+    description: 'A bright, wobbly jelly made with real pineapple juice and studded with juicy pineapple pieces, served chilled.',
+    imageUrl: '/images/desserts/pineapple-jelly.jpg',
+    price: 3.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '64f43e5d-4a25-43e8-8447-61e43761c7db',
+    name: 'Mango Jelly',
+    slug: 'mango-jelly',
+    description: 'A sweet and fragrant mango jelly with a soft, silky set, topped with fresh mango cubes and a touch of lime zest.',
+    imageUrl: '/images/desserts/mango-jelly.jpg',
+    price: 3.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'aafb6086-34e5-43bc-8ee8-a169ffd5eaa3',
+    name: 'Milk Jelly',
+    slug: 'milk-jelly',
+    description: 'A delicate, milky jelly with a gentle vanilla sweetness and a creamy melt-in-the-mouth texture, served cold with strawberry syrup.',
+    imageUrl: '/images/desserts/milk-jelly.jpg',
+    price: 3.75,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

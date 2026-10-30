@@ -1,0 +1,33 @@
+@reference "#globals";
+
+.heading {
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  margin-bottom: --spacing(5);
+
+  @variant md {
+    font-size: var(--text-4xl);
+    margin-bottom: --spacing(8);
+  }
+}
+
+.dishesGrid {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  gap: --spacing(5);
+
+  @variant md {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+
+  @variant lg {
+    gap: --spacing(10);
+  }
+
+  @variant xl {
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: --spacing(10);
+  }
+}

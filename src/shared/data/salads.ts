@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'salads')?.id ?? '';
+
+export const salads: Dish[] = [
+  {
+    id: 'f26711c5-e4bd-46e3-a4f6-857ab3e30c0f',
+    name: 'Garden House Salad',
+    slug: 'garden-house-salad',
+    description: 'Crisp lettuce, ripe tomato, red onion, cucumber, carrot, sweetcorn and golden croutons tossed in a creamy ranch dressing.',
+    imageUrl: '/images/salads/garden-house-salad.jpg',
+    price: 6.50,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: 'e956a635-3f9f-4690-b5d8-5eba14567b99',
+    name: 'Classic Caesar Salad',
+    slug: 'classic-caesar-salad',
+    description: 'Crisp romaine lettuce, cherry tomatoes, red onion and crunchy croutons tossed in a creamy Caesar dressing, finished with shaved parmesan and a squeeze of lemon.',
+    imageUrl: '/images/salads/classic-caesar-salad.jpg',
+    price: 7.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'd92d87f8-2cd5-4fa6-96a9-518e174c2a96',
+    name: 'Greek Salad',
+    slug: 'greek-salad',
+    description: 'Crisp lettuce, ripe tomato, red onion, cucumber, Kalamata olives and roasted red pepper, topped with crumbled feta and golden croutons, dressed with olive oil and lemon vinaigrette.',
+    imageUrl: '/images/salads/greek-salad.jpg',
+    price: 8.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '4f6bde78-795c-46b4-b19d-30a23126f889',
+    name: 'Crispy Chicken Caesar Salad',
+    slug: 'crispy-chicken-caesar-salad',
+    description: 'Crisp romaine lettuce, ripe tomato, red onion and crunchy croutons topped with sliced crispy chicken and shaved parmesan, tossed in a creamy Caesar dressing.',
+    imageUrl: '/images/salads/crispy-chicken-caesar-salad.jpg',
+    price: 9.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'd42127a5-f474-48ed-9f97-6b1dcb72f148',
+    name: 'Honey Mustard Chicken Salad',
+    slug: 'honey-mustard-chicken-salad',
+    description: 'Grilled chicken breast over crisp lettuce, ripe tomato, red onion, carrot and sweetcorn with golden croutons, drizzled with a sweet honey mustard dressing.',
+    imageUrl: '/images/salads/honey-mustard-chicken-salad.jpg',
+    price: 9.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'a1f87438-efe0-44a9-a4a4-2306d5b20ab5',
+    name: 'Mexican Ranchera Salad',
+    slug: 'mexican-ranchera-salad',
+    description: 'Crisp lettuce, ripe tomato, red onion and crunchy croutons with black beans, sweetcorn, avocado, coriander and pickled jalapeños, tossed in a smoky chipotle ranch dressing.',
+    imageUrl: '/images/salads/mexican-ranchera-salad.jpg',
+    price: 8.75,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'c3ee633d-abb8-418c-ae36-fe0c2bb0f95d',
+    name: 'Tuna Garden Salad',
+    slug: 'tuna-garden-salad',
+    description: 'Flaked tuna over crisp lettuce, ripe tomato, red onion, cucumber and golden croutons with boiled egg and olives, finished with a balsamic vinaigrette.',
+    imageUrl: '/images/salads/tuna-garden-salad.jpg',
+    price: 9.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'fe5bc3ae-0d52-4e27-87ff-802361e8a157',
+    name: 'Spinach & Strawberry Salad',
+    slug: 'spinach-strawberry-salad',
+    description: 'Baby spinach and crisp lettuce with ripe tomato, red onion, fresh strawberries, candied walnuts and golden croutons, topped with crumbled goat cheese and a poppy seed vinaigrette.',
+    imageUrl: '/images/salads/spinach-strawberry-salad.jpg',
+    price: 8.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

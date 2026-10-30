@@ -8,6 +8,7 @@ import { SignInOut } from "./(components)/sign-in-out";
 import { ThemeSwitcher } from "./(components)/theme-switcher";
 import styles from "./layout.module.css";
 import { Providers } from "./providers";
+import { MobileMenu } from "./(components)/main-navigation/mobile-menu";
 
 export const metadata: Metadata = {
   title: "Dish Vibes",
@@ -31,6 +32,7 @@ const PublicLayout: FC<Props> = ({ children }) => {
               <Orders />
               <SignInOut />
               <ThemeSwitcher />
+              <MobileMenu />
             </div>
           </nav>
         </header>
@@ -45,6 +47,6 @@ const PublicLayout: FC<Props> = ({ children }) => {
       </div>
     </Providers>
   );
-}
+};
 
 export default PublicLayout;

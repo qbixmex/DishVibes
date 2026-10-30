@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from 'react-hook-form';
 import { Field, FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
@@ -54,9 +54,10 @@ export const SearchDish: FC = () => {
                 </Field>
               )}
             />
-            <Search className={styles.searchIcon} aria-hidden />
           </div>
-          <Button type="submit" variant="default">search</Button>
+          <Button type="submit" variant="default">
+            <Search className={styles.searchIcon} aria-hidden />
+          </Button>
         </div>
       </form>
     </div>

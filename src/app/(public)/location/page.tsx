@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import styles from ".styles.module.css";
+// import styles from ".styles.module.css";
 
 const LocationPage: FC = () => {
   return (

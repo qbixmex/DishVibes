@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
         search: '',
       },
     ],
-  }
+  },
 };
 
 export default nextConfig;

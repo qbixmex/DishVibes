@@ -1,0 +1,43 @@
+@reference "#globals";
+
+.dishesSection {
+  width: 100%;
+}
+
+.viewport {
+  overflow: hidden;
+  padding: --spacing(5);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  border-radius: var(--radius-xl);
+
+  @variant max-lg {
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  gap: --spacing(4);
+
+  @variant lg {
+    gap: --spacing(2);
+    justify-content: space-evenly;
+  }
+}
+
+.slide {
+  flex: 0 0 auto;
+  min-width: 0;
+
+  @variant lg {
+    flex: 0 1 auto;
+  }
+}

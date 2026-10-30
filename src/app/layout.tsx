@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { montserrat, openSans, robotoMono } from "./fonts";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,6 +26,6 @@ const RootLayout: FC<Props> = ({ children }) => {
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

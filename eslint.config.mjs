@@ -13,6 +13,24 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      'semi': 'warn',
+      'react/jsx-handler-names': 'off',
+      'indent': 'off',
+      'camelcase': 'off',
+      'no-tabs': 'off',
+      '@next/next/no-img-element': 'off',
+      'no-undef': 'off',
+      'space-before-function-paren': 'off',
+      'comma-dangle': ['warn', 'always-multiline'],
+      '@next/next/no-html-link-for-pages': 'off',
+      'multiline-ternary': 'off',
+      'react/jsx-fragments': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
+    },
+  },
 ]);
 
 export default eslintConfig;

@@ -1,0 +1,15 @@
+@reference "#globals";
+
+.dishesSelector {
+  display: flex;
+  flex-direction: column;
+  gap: --spacing(6);
+
+  @variant md {
+    gap: --spacing(8);
+  }
+
+  @variant lg {
+    gap: --spacing(10);
+  }
+}

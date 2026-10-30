@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'pasta')?.id ?? '';
+
+export const pastas: Dish[] = [
+  {
+    id: '4426de1d-e69a-4688-aa57-cb0605539901',
+    name: 'Spaghetti Bolognese',
+    slug: 'spaghetti-bolognese',
+    description: 'Al dente spaghetti tossed in a slow-cooked beef and tomato ragù with red wine, garlic and herbs.',
+    imageUrl: '/images/pastas/spaghetti-bolognese.jpg',
+    price: 13.50,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: 'e7ddf27c-ff66-45fa-9ea9-e5047cff2e2a',
+    name: 'Fettuccine Alfredo',
+    slug: 'fettuccine-alfredo',
+    description: 'Fresh fettuccine coated in a silky cream sauce with butter, garlic and aged parmesan, topped with cracked black pepper and parsley.',
+    imageUrl: '/images/pastas/fettuccine-alfredo.jpg',
+    price: 13.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '351e47af-938c-4525-81cb-c230882861fe',
+    name: 'Penne Arrabbiata',
+    slug: 'penne-arrabbiata',
+    description: 'Penne in a fiery tomato sauce with garlic, chilli flakes and fresh basil, finished with a drizzle of extra virgin olive oil.',
+    imageUrl: '/images/pastas/penne-arrabbiata.jpg',
+    price: 12.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'f711db23-01d7-43f8-bc1a-6147e94cd26c',
+    name: 'Lasagna alla Bolognese',
+    slug: 'lasagna-alla-bolognese',
+    description: 'Layers of egg pasta filled with beef ragù, béchamel and mozzarella, baked until golden and bubbling, served with a side of garlic bread.',
+    imageUrl: '/images/pastas/lasagna-alla-bolognese.jpg',
+    price: 15.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'f11cc7f4-a925-4e26-bbaf-1bc169b8f871',
+    name: 'Creamy Carbonara',
+    slug: 'creamy-carbonara',
+    description: 'Spaghetti tossed with crispy pancetta, egg yolk, pecorino romano and black pepper for a rich, creamy sauce without a drop of cream.',
+    imageUrl: '/images/pastas/creamy-carbonara.jpg',
+    price: 14.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '26b25041-ddca-4523-b159-744f369c7e79',
+    name: 'Pesto Linguine',
+    slug: 'pesto-linguine',
+    description: 'Linguine tossed in vibrant basil pesto with pine nuts, garlic and parmesan, topped with cherry tomatoes and shaved pecorino.',
+    imageUrl: '/images/pastas/pesto-linguine.jpg',
+    price: 13.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'b016b285-be12-4f2b-8f8e-5d8969f25af6',
+    name: 'Tonkotsu Ramen',
+    slug: 'tonkotsu-ramen',
+    description: 'Rich pork bone broth simmered for hours, served with springy ramen noodles, chashu pork, a soft-boiled egg, bamboo shoots and nori.',
+    imageUrl: '/images/pastas/tonkotsu-ramen.jpg',
+    price: 14.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '433a5a2c-fb6d-4641-8e2a-b2a581d1f4bf',
+    name: 'Spicy Miso Ramen',
+    slug: 'spicy-miso-ramen',
+    description: 'A bold miso broth with a chilli kick, packed with ramen noodles, minced chicken, corn, spring onions, bamboo shoots and a soft-boiled egg.',
+    imageUrl: '/images/pastas/spicy-miso-ramen.jpg',
+    price: 14.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

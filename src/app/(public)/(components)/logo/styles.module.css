@@ -7,17 +7,27 @@
 
   figure {
     background-color: var(--color-orange-600);
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     display: grid;
     place-content: center;
 
+    @variant xl {
+      width: 50px;
+      height: 50px;
+    }
+
     svg {
-      width: 28px;
-      height: 28px;
+      width: 16px;
+      height: 16px;
       stroke: var(--color-orange-50);
       stroke-width: 2.5px;
+
+      @variant xl {
+        width: 28px;
+        height: 28px;
+      }
 
       @variant dark {
         stroke: var(--color-orange-950);
@@ -27,9 +37,14 @@
 
   span {
     font-family: var(--font-heading), Arial, sans-serif;
-    font-size: var(--text-xl);
-    font-weight: 900;
+    font-size: var(--text-sm);
+    font-weight: 700;
     text-transform: uppercase;
+    
+    @variant xl {
+      font-size: var(--text-xl);
+      font-weight: 900;
+    }
   }
 }
 

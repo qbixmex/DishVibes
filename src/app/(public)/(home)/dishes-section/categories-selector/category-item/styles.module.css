@@ -1,0 +1,31 @@
+@reference "tailwindcss";
+
+.category {
+  position: relative;
+  width: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: --spacing(2);
+  cursor: pointer;
+}
+
+.iconWrapper {
+  padding: --spacing(5);
+  border-radius: 50%;
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+.selectedCategory {
+  background-color: var(--color-primary);
+}
+
+.categoryName {
+  position: relative;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  gap: --spacing(1);
+}

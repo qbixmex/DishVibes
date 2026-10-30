@@ -1,8 +1,13 @@
 import type { FC } from "react";
+import { HeroSection } from "./(home)/hero-section";
+import { DishesSection } from "./(home)/dishes-section";
 
 const HomePage: FC = () => {
   return (
-    <p>Home Page</p>
+    <section className="mb-10">
+      <HeroSection />
+      <DishesSection />
+    </section>
   );
 };
 

@@ -1,0 +1,72 @@
+@reference "#globals";
+
+.dishName {
+	font-size: var(--text-lg);
+	line-height: var(--text-lg--line-height);
+	font-weight: 700;
+	font-family: var(--font-heading);
+}
+
+.dishPlaceholderImage {
+	position: relative;
+	background-color: --alpha(var(--color-input) / 50%);
+	height: 180px;
+	border-radius: var(--radius-lg);
+	padding: --spacing(5);
+
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		
+		&:nth-child(1) {
+			width: 100px;
+			height: 100px;
+			stroke: var(--color-gray-600);
+			fill: var(--color-gray-600);
+			margin-top: calc(var(--spacing) * -5);
+			margin-left: calc(var(--spacing) * -5);
+		}
+
+		&:nth-child(2) {
+			width: 80px;
+			height: 80px;
+			stroke: var(--color-gray-600);
+			fill: var(--color-gray-600);
+			margin-top: calc(var(--spacing) * 3);
+			margin-left: calc(var(--spacing) * 3);
+		}
+	}
+}
+
+.dishImage {
+	border-radius: var(--radius-md);
+	border: 1px solid var(--color-border);
+	object-fit: cover;
+	object-position: center;
+}
+
+.dishDescription {
+	font-size: var(--text-base);
+	line-height: var(--text-base--line-height);
+	font-family: var(--font-sans);
+	color: --alpha(var(--color-muted-foreground) / 90%);
+}
+
+.footer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	.dishPrice {
+		font-size: var(--text-lg);
+		line-height: var(--text-lg--line-height);
+		font-family: var(--font-mono);
+		color: var(--color-amber-500);
+	}
+
+	.dishCtaButton {
+		background-color: var(--color-primary);
+	}
+}

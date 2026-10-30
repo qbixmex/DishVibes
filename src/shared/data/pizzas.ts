@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'pizza')?.id ?? '';
+
+export const pizzas: Dish[] = [
+  {
+    id: 'd2f9d32f-fa53-4848-a8dc-675fce14641a',
+    name: 'Pepperoni Pizza',
+    slug: 'pepperoni-pizza',
+    description: 'Toasted garlic parmesan and asiago crust topped with creamy garlic white sauce, mozzarella cheese, pepperoni, and garlic herb seasoning.',
+    imageUrl: '/images/pizzas/pepperoni-pizza.png',
+    price: 12.95,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: 'c6590667-d325-4fda-a995-3ac9a774b0a3',
+    name: 'Chicago Style Italian Deluxe',
+    slug: 'chicago-style-italian-deluxe',
+    imageUrl: '/images/pizzas/chicago-style-italian-deluxe.png',
+    description: 'Medium round pizza with a thick “Chicago style” crust, filled with layers of our classic pizza sauce, shredded cheeses, pepperoni, Italian sausage, Green Peppers, Onions. Finished with a sprinkle of parmesan cheese and oregano.',
+    price: 14.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '5c2620d8-aaa1-4910-b62b-4e79af7ab6eb',
+    name: 'Chicago Style Pepperoni Classic',
+    slug: 'chicago-style-pepperoni-classic',
+    imageUrl: '/images/pizzas/chicago-style-pepperoni-classic.png',
+    description: 'A medium round pizza with a thick “Chicago style” crust, filled with layers of our classic pizza sauce, shredded cheeses, and topped with double the amount of pepperoni. Finished with a sprinkle of parmesan cheese and oregano.',
+    price: 14.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '0f4ab82c-4694-4185-ba0e-043dc4bb77f6',
+    name: 'Chicago Style Cheese Classic',
+    slug: 'chicago-style-cheese-classic',
+    imageUrl: '/images/pizzas/chicago-style-cheese-classic.png',
+    description: 'A medium round pizza with a thick “Chicago style” crust, filled with layers of our classic pizza sauce, shredded cheeses. Finished with a sprinkle of parmesan cheese and oregano.',
+    price: 14.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'd3e893f0-4fbe-4765-b6dd-7f5f0c1cd184',
+    name: 'Hawaiian Pizza',
+    slug: 'hawaiian-pizza',
+    imageUrl: '/images/pizzas/hawaiian-pizza.png',
+    description: 'Large round pizza with Ham and Pineapple, mozzarella cheese, tomato sauce.',
+    price: 14.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '1cac4242-052c-4486-8b44-133c1f63dd40',
+    name: 'Cheesy Garlic Bacon and Ham',
+    slug: 'cheesy-garlic-bacon-and-ham',
+    imageUrl: '/images/pizzas/cheesy-garlic-bacon-and-ham.png',
+    description: 'Toasted garlic parmesan and asiago crust topped with cheesy garlic white sauce, Mozzarella chees, Bacon crumble, ham, and garlic herb seasoning.',
+    price: 12.90,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '1c38c699-6f14-4bc8-823d-8a7d3203e6f5',
+    name: 'Meat Lovers Pizza',
+    slug: 'meat-lovers-pizza',
+    imageUrl: '/images/pizzas/meat-lovers-pizza.png',
+    description: 'Peperoni slices, Bacon crumble, ground meet, Ham, Mozzarella Cheese, Tomato sauce, and garlic herb seasoning.',
+    price: 14.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '1e4ead8d-85c7-421a-bcc9-e253eead1b61',
+    name: 'Ultimate Supreme Pizza',
+    slug: 'ultimate-supreme-pizza',
+    imageUrl: '/images/pizzas/ultimate-supreme-pizza.png',
+    description: 'Large round pizza with Pepperoni, Italian Sausage, Mushrooms, Green Peppers and Onions',
+    price: 16.00,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

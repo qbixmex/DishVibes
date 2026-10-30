@@ -1,9 +1,13 @@
 @reference "#globals";
 
 .formContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: none;
+  
+  @variant xl {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 
 .formGroup {
@@ -17,12 +21,15 @@
 }
 
 .input {
-  width: 100%;
-  min-width: 250px;
-  max-width: 350px;
-  padding-left: --spacing(8);
+  width: 150px;
   color: var(--color-gray-500);
   font-style: italic;
+  font-size: var(--text-sm);
+
+  @variant xl {
+    font-size: var(--text-base);
+    width: 250px;
+  }
 
   @variant focus {
     color: var(--color-primary);
@@ -33,13 +40,9 @@
 }
 
 .searchIcon {
-  position: absolute;
-  top: 50%;
-  left: --spacing(2);
   width: 18px;
   height: 18px;
-  transform: translateY(-50%);
-  stroke: var(--color-gray-500);
+  stroke: var(--color-orange-50);
   stroke-width: 3px;
 }
 

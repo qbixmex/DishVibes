@@ -26,6 +26,7 @@
 
   .columnLeft {
     display: flex;
+    align-items: center;
     gap: --spacing(10);
   }
 

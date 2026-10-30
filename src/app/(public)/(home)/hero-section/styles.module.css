@@ -1,0 +1,201 @@
+@reference "#globals";
+
+.heroSection {
+	position: relative;
+  overflow: hidden;
+  height: 280px;
+
+  @variant sm {
+		height: 320px;
+	}
+
+  @variant md {
+		height: 480px;
+	}
+
+  @variant lg {
+		height: 512px;
+	}
+
+  @variant xl {
+		height: 620px;
+	}
+
+  @variant 2xl {
+		height: 720px;
+	}
+
+  .heroInformation {
+		position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+		z-index: 10;
+		padding: --spacing(5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: --spacing(2);
+
+    @variant md {
+      justify-content: space-evenly;
+      
+    }
+
+    .heroHeading {
+			display: flex;
+      justify-content: center;
+      gap: --spacing(1);
+			font-family: var(--font-heading);
+			font-size: 1.8rem;
+			line-height: 1.8rem;
+			font-weight: 800;
+			text-transform: uppercase;
+      width: 100%;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+
+      @variant sm {
+				font-size: 2.2rem;
+        line-height: 2rem;
+			}
+
+      @variant md {
+        gap: --spacing(2);
+        font-weight: 900;
+				font-size: 2.8rem;
+        line-height: 2.8rem;
+			}
+
+      @variant lg {
+        gap: --spacing(3);
+				font-size: 3rem;
+        line-height: 2.8rem;
+			}
+
+      @variant xl {
+        gap: --spacing(4);
+				font-size: 4rem;
+        line-height: 3.8rem;
+			}
+
+      @variant 2xl {
+        gap: --spacing(5);
+        font-size: 5rem;
+        line-height: 4.8rem;
+			}
+
+      span:first-child {
+				color: var(--color-amber-500);
+			}
+
+      span:last-child {
+        color: var(--color-orange-200);
+			}
+
+		}
+
+    .heroButtons {
+			display: flex;
+			gap: --spacing(5);
+      justify-content: center;
+      
+      @variant lg {
+        width: 100%;
+      }
+
+      .ctaOrder,
+      .ctaMenu {
+        border-radius: var(--radius-sm);
+				padding-block: --spacing(1);
+				padding-inline: --spacing(2);
+        font-family: var(--font-heading);
+				font-weight: 600;
+				font-size: 14px;
+        text-transform: lowercase;
+        border-radius: var(--radius-xs);
+        transition: background-color 300ms ease-in-out;
+
+        @variant sm {
+          font-size: 16px;
+          padding-block: --spacing(2);
+          padding-inline: --spacing(4);
+          border-radius: var(--radius-sm);
+        }
+        
+        @variant md {
+          font-size: 18px;
+          font-weight: 700;
+          padding-block: --spacing(3);
+          padding-inline: --spacing(6);
+          border-radius: var(--radius-md);
+          text-transform: capitalize;
+        }
+        
+        @variant lg {
+          padding-block: --spacing(3);
+          padding-inline: --spacing(6);
+          border-radius: var(--radius-md);
+          text-transform: capitalize;
+        }
+        
+        @variant xl {
+          font-weight: 700;
+          padding-block: --spacing(4);
+          padding-inline: --spacing(6);
+          border-radius: var(--radius-lg);
+        }
+      }
+
+      .ctaOrder {
+				display: flex;
+				align-items: center;
+				gap: --spacing(2);
+				background-color: color-mix(in srgb, var(--color-red-600) 80%, #000);
+
+        @variant hover {
+          background-color: color-mix(in srgb, var(--color-red-600) 50%, #000);
+        }
+
+        svg {
+					width: 22px;
+					height: 22px;
+				}
+			}
+			.ctaMenu {
+				background-color: var(--color-amber-600);
+
+        @variant hover {
+          background-color: var(--color-amber-700);
+        }
+      }
+		}
+	}
+
+  .heroGraphic {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    place-content: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: --alpha(#000 / 30%);
+    }
+
+    .heroImage {
+			width: 100%;
+			max-width: 1280px;
+			height: auto;
+      mask-image: linear-gradient(to right, transparent, black 25%, black 50%, transparent);
+      object-fit: cover;
+      object-position: center;
+		}
+	}
+}

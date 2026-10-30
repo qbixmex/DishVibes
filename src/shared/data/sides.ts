@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'sides')?.id ?? '';
+
+export const sides: Dish[] = [
+  {
+    id: '2c134367-9124-4038-95b3-b330bf89e066',
+    name: 'Crispy Onion Rings',
+    slug: 'crispy-onion-rings',
+    description: 'Thick-cut onion rings in a golden beer batter, fried until crunchy and served with a smoky chipotle dipping sauce.',
+    imageUrl: '/images/sides/crispy-onion-rings.jpg',
+    price: 5.50,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: '2156a799-3639-456c-aa0f-249eccc74fb0',
+    name: 'Classic French Fries',
+    slug: 'classic-french-fries',
+    description: 'Skin-on potatoes cut into thin fries, double-fried for a crisp shell and fluffy centre, seasoned with sea salt.',
+    imageUrl: '/images/sides/classic-french-fries.jpg',
+    price: 4.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'bffc5c3d-5b97-47bb-b0b8-087655d60d37',
+    name: 'Seasoned Potato Wedges',
+    slug: 'seasoned-potato-wedges',
+    description: 'Chunky potato wedges tossed in paprika, garlic and herbs, oven-roasted until golden and served with a garlic mayo dip.',
+    imageUrl: '/images/sides/seasoned-potato-wedges.jpg',
+    price: 5.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'edf4266d-2f71-4d28-8fa7-bc85d35bf1dc',
+    name: 'Crunchy Keto Breadsticks',
+    slug: 'crunchy-keto-breadsticks',
+    description: 'Superfine blanched almond with flour Parmesan Cheese and dried herbs and some powder spice garlic.',
+    imageUrl: '/images/sides/crunchy-keto-breadsticks.jpg',
+    price: 6.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'b2e00704-fddc-4b6f-b5a5-7b88f8e18ec5',
+    name: 'Garlic Breadsticks',
+    slug: 'garlic-breadsticks',
+    description: 'Soft, freshly baked breadsticks brushed with garlic butter, sprinkled with parsley and parmesan, served warm with a tomato dip.',
+    imageUrl: '/images/sides/garlic-breadsticks.jpg',
+    price: 5.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '5e7f8742-bddc-4f60-8384-fd44c5a753c0',
+    name: 'Mozzarella Sticks',
+    slug: 'mozzarella-sticks',
+    description: 'Crispy, golden-brown mozzarella sticks featuring premium melty mozzarella cheese encased in a crunchy, herb-infused breading. Seasoned with garlic, Italian herbs, and cracked black pepper',
+    imageUrl: '/images/sides/mozzarella-sticks.jpg',
+    price: 6.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '3a696d1a-0228-4512-8948-006e8ddf6acf',
+    name: 'Jalapeño Poppers',
+    slug: 'jalapeno-poppers',
+    description: 'Six jalapeño halves stuffed with cream cheese, coated in a crunchy breadcrumb crust and served with a sweet chilli dip.',
+    imageUrl: '/images/sides/jalapeno-poppers.jpg',
+    price: 6.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'e59518df-4c63-4d82-9e6f-9b54b80370f0',
+    name: 'Cheesy Nachos',
+    slug: 'cheesy-nachos',
+    description: 'A sharing basket of crisp tortilla chips topped with melted cheese sauce, salsa, jalapeños and a dollop of sour cream.',
+    imageUrl: '/images/sides/cheesy-nachos.jpg',
+    price: 7.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

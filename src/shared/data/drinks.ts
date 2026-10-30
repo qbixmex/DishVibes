@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'drinks')?.id ?? '';
+
+export const drinks: Dish[] = [
+  {
+    id: 'f1f4b426-a688-417a-bfbf-f82c2e9e0d1a',
+    name: 'Coca-Cola',
+    slug: 'coca-cola-drink',
+    description: 'A chilled glass of classic Coca-Cola, poured over ice for that unmistakable sweet, fizzy taste.',
+    imageUrl: '/images/drinks/coca-cola-drink.jpg',
+    price: 2.50,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: 'd62a5039-694c-4502-bfd5-a648a52adf90',
+    name: 'Dr Pepper',
+    slug: 'dr-pepper-drink',
+    description: 'The one-of-a-kind taste of Dr Pepper, a bold blend of 23 flavours served chilled over ice.',
+    imageUrl: '/images/drinks/dr-pepper-drink.jpg',
+    price: 2.75,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '3f525bb3-dbb6-453c-8eaa-870bdccc2efe',
+    name: 'Fanta',
+    slug: 'fanta-drink',
+    description: 'Bright orange Fanta served ice cold, with a bold citrus sweetness and lively bubbles.',
+    imageUrl: '/images/drinks/fanta-drink.jpg',
+    price: 2.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '66f527ab-a3fa-497e-a068-fbcb1a054797',
+    name: 'Sprite',
+    slug: 'sprite-drink',
+    description: 'Crisp, clean lemon-lime Sprite over ice, refreshing and caffeine free.',
+    imageUrl: '/images/drinks/sprite-drink.jpg',
+    price: 2.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'f4edfef2-b0c7-46e3-9ca6-6ea8f8f94dc9',
+    name: 'Lemonade',
+    slug: 'lemonade-drink',
+    description: 'Freshly squeezed lemons shaken with water and cane sugar, served over ice with a lemon wheel.',
+    imageUrl: '/images/drinks/lemonade-drink.jpg',
+    price: 3.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'b51a20a3-de8f-4957-95c8-7795cbc551d2',
+    name: 'Horchata',
+    slug: 'horchata-drink',
+    description: 'A traditional Mexican drink made with rice, milk, cinnamon and a touch of vanilla, served ice cold and beautifully creamy.',
+    imageUrl: '/images/drinks/horchata-drink.jpg',
+    price: 3.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'b88d476c-f0a0-4bbe-8f83-8ecb551f1fcf',
+    name: 'Agua de Jamaica',
+    slug: 'jamaica',
+    description: 'A ruby-red Mexican hibiscus cooler, steeped with dried hibiscus flowers and lightly sweetened, served over ice.',
+    imageUrl: '/images/drinks/jamaica-drink.jpg',
+    price: 3.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'ad992c45-e848-46b9-af23-8ed7368dd58b',
+    name: 'Agua de Tamarindo',
+    slug: 'tamarindo-drink',
+    description: 'A tangy-sweet Mexican tamarind drink with a pleasant tartness.',
+    imageUrl: '/images/drinks/tamarindo-drink.jpg',
+    price: 3.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

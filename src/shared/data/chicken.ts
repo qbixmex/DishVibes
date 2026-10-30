@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'chicken')?.id ?? '';
+
+export const chicken: Dish[] = [
+  {
+    id: 'a3909422-2fa5-4682-8680-7f5b07bebde2',
+    name: 'Golden Eight Drumstick Bucket',
+    slug: 'golden-eight-drumstick-bucket',
+    description: 'Eight hand-breaded chicken drumsticks fried until deep golden and juicy, seasoned with our signature blend of herbs and spices.',
+    imageUrl: '/images/chicken/golden-eight-drumstick-bucket.jpg',
+    price: 18.95,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: '971fbe34-9997-48fb-b8d7-32018f6595a6',
+    name: 'Crispy Eight Wing Party Pack',
+    slug: 'crispy-eight-wing-party-pack',
+    description: 'Eight crispy chicken wings tossed in your choice of classic seasoning, crispy on the outside and tender on the inside. Perfect for sharing.',
+    imageUrl: '/images/chicken/crispy-eight-wing-party-pack.jpg',
+    price: 16.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'e94d889d-aa1f-4a76-84c4-f39553fd5fa8',
+    name: 'Mixed Feast Four & Four',
+    slug: 'mixed-feast-four-and-four',
+    description: 'Four golden drumsticks and four crispy wings in one box, hand-breaded and fried to order for the perfect mix of dark meat and wings.',
+    imageUrl: '/images/chicken/mixed-feast-four-and-four.jpg',
+    price: 17.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'f27f7101-3fad-4c96-8089-8f08ebcae5af',
+    name: 'Smoky Barbecue Chicken Breast',
+    slug: 'smoky-barbecue-chicken-breast',
+    description: 'A tender grilled chicken breast glazed in smoky barbecue sauce, char-grilled to lock in the flavour and finished with a sprinkle of herbs.',
+    imageUrl: '/images/chicken/smoky-barbecue-chicken-breast.jpg',
+    price: 11.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '459fe269-38ff-4dbc-b697-4af82751e8aa',
+    name: 'Two Wings & A Drum Snack Box',
+    slug: 'two-wings-and-a-drum-snack-box',
+    description: 'A light snack box with two crispy chicken wings and one golden drumstick, hand-breaded and seasoned with our signature herbs and spices.',
+    imageUrl: '/images/chicken/two-wings-and-a-drum-snack-box.jpg',
+    price: 7.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '3402737d-8316-4606-a1f9-526d64149d3e',
+    name: 'Chicken Tenders',
+    slug: 'chicken-tenders',
+    description: '3 crispy chicken boneless wedges with a fiery spice coating and barbecue sauce.',
+    imageUrl: '/images/chicken/chicken-tenders.jpg',
+    price: 9.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '9250ffb9-16fd-453a-aeff-a4faaf5ec344',
+    name: 'Bite-Size Crunch Nuggets',
+    slug: 'bite-size-crunch-nuggets',
+    description: 'Tender pieces of chicken breast coated in a light, crunchy breading and fried until golden.',
+    imageUrl: '/images/chicken/bite-size-crunch-nuggets.jpg',
+    price: 8.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '0548f134-47a7-4bfa-8ef8-4d1b4d22ea5e',
+    name: 'Honey-Glazed Hot Wings',
+    slug: 'honey-glazed-hot-wings',
+    description: 'Six crispy chicken wings tossed in a sticky honey and chilli glaze, delivering a sweet heat that builds with every bite.',
+    imageUrl: '/images/chicken/honey-glazed-hot-wings.jpg',
+    price: 9.75,
+    categoryId: categoryId,
+    featured: false,
+  },
+];

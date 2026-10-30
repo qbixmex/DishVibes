@@ -1,0 +1,88 @@
+import type { Dish } from "../interfaces/dish.interface";
+import { categories } from "./categories";
+
+const categoryId = categories
+  .find((category) => category.name.toLowerCase() === 'burgers')?.id ?? '';
+
+export const hamburgers: Dish[] = [
+  {
+    id: '5316f2ba-5b30-4939-ad21-e97c81e830e5',
+    name: 'Classic Cheeseburger',
+    slug: 'classic-cheeseburger',
+    description: 'A juicy beef patty topped with melted cheddar cheese, crisp lettuce, tomato, pickles, onions, ketchup and mustard, served on a toasted sesame seed bun.',
+    imageUrl: '/images/hamburgers/classic-cheeseburger.jpg',
+    price: 8.95,
+    categoryId: categoryId,
+    featured: true,
+  },
+  {
+    id: '3cc21232-d32c-47ff-9a45-0ca834bbcad7',
+    name: 'Crispy Chicken Burger',
+    slug: 'crispy-chicken-burger',
+    description: 'A golden breaded chicken fillet topped with fresh lettuce, tomato, pickles and creamy mayo, served on a toasted bun.',
+    imageUrl: '/images/hamburgers/crispy-chicken-burger.jpg',
+    price: 9.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: 'b2bf9aea-9ea9-4bce-be79-a4372b316cb7',
+    name: 'Fish Burger',
+    slug: 'fish-burger',
+    description: 'A crispy breaded white fish fillet topped with tangy tartar sauce, lettuce and pickles, served on a steamed bun.',
+    imageUrl: '/images/hamburgers/fish-burger.jpg',
+    price: 8.75,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '3a6939c8-a68a-4e19-94eb-43d0df6dde6',
+    name: 'Quarter Pond Burger',
+    slug: 'quarter-pond-burger',
+    description: 'A quarter pound of flame-grilled beef topped with tomatoes, lettuce, mayo, ketchup, pickles and onions, served on a toasted sesame seed bun.',
+    imageUrl: '/images/hamburgers/quarter-pond-burger.jpg',
+    price: 10.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '5c0622d9-9a58-4a2f-9631-d082826af563',
+    name: 'Double Meat Burger',
+    slug: 'double-meat-burger',
+    description: 'Two beef patties layered with hot special sauce with mixed with mayonnaise, shredded lettuce, American cheese, pickles and onions, served on a three-part sesame seed bun.',
+    imageUrl: '/images/hamburgers/double-meat-burger.jpg',
+    price: 9.95,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '437e979d-37eb-4e66-876f-65b7c2629f8a',
+    name: 'Double Quarter Pounder with Cheese',
+    slug: 'double-quarter-pounder-with-cheese',
+    description: 'Two quarter pound beef patties with double the melted American cheese, onions, pickles, ketchup and mustard, served on a toasted sesame seed bun.',
+    imageUrl: '/images/hamburgers/double-quarter-pounder-with-cheese.jpg',
+    price: 11.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '81a7e93d-4391-47cf-af4a-cf3fef9e3fcf',
+    name: 'Bacon King',
+    slug: 'bacon-king',
+    description: 'Two flame-grilled beef patties stacked with thick-cut smoked bacon, double American cheese, ketchup and mayo, served on a toasted sesame seed bun.',
+    imageUrl: '/images/hamburgers/bacon-king.jpg',
+    price: 12.25,
+    categoryId: categoryId,
+    featured: false,
+  },
+  {
+    id: '979b7ddb-a8d7-4a38-b0b6-516a2ac3cd5c',
+    name: 'Piggy Burger',
+    slug: 'piggy-burger',
+    description: 'A boneless pork patty smothered in smoky BBQ sauce, topped with slivered onions and pickles, served on a homestyle hoagie-style bun.',
+    imageUrl: '/images/hamburgers/piggy-burger.jpg',
+    price: 10.50,
+    categoryId: categoryId,
+    featured: false,
+  },
+];
