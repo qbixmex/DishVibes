@@ -45,7 +45,7 @@ export const DishItem: FC<Props> = ({ dish }) => {
             <p className={styles.dishPrice}>${dish.price}</p>
           </div>
           <div>
-            <Button className={styles.dishCtaButton}>Add to cart</Button>
+            <Button className={styles.dishCtaButton}>add order</Button>
           </div>
         </div>
       </CardFooter>

@@ -42,7 +42,6 @@
 
 .dishImage {
 	border-radius: var(--radius-md);
-	border: 1px solid var(--color-border);
 	object-fit: cover;
 	object-position: center;
 }
