@@ -3,6 +3,10 @@ import { dishes } from "@/shared/data/all-dishes";
 
 const requests = new Map<string, Promise<Dish[]>>();
 
+export const resetHomeDishesCache = (): void => {
+  requests.clear();
+};
+
 export const getHomeDishes = ({
   categoryId,
   limit,

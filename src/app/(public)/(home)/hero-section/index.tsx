@@ -8,12 +8,17 @@ export const HeroSection: FC = () => {
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroInformation}>
-        <div className={styles.heroHeading}>
-          <span>Great</span>
+        <h2 className={styles.heroHeading}>
+          <span>Great</span>&nbsp;
           <span>Meals</span>
-        </div>
+        </h2>
         <div className={styles.heroButtons}>
-          <Link href="#" className={styles.ctaOrder}>Order Now <ArrowRight /></Link>
+          <button
+            className={styles.ctaOrder}
+            onClick={() => {}}
+          >
+            Order Now <ArrowRight />
+          </button>
           <Link href="#" className={styles.ctaMenu}>Explore menu</Link>
         </div>
       </div>

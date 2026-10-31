@@ -6,6 +6,7 @@ import { FeaturesSection } from "./(home)/features-section";
 const HomePage: FC = () => {
   return (
     <section className="mb-10">
+      <h1 className="visually-hidden">Dish Vibes</h1>
       <HeroSection />
       <DishesSection />
       <FeaturesSection />

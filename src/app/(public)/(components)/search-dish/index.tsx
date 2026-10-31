@@ -55,7 +55,7 @@ export const SearchDish: FC = () => {
               )}
             />
           </div>
-          <Button type="submit" variant="default">
+          <Button type="submit" variant="default" aria-label="Search">
             <Search className={styles.searchIcon} aria-hidden />
           </Button>
         </div>
