@@ -1,0 +1,41 @@
+@reference "tailwindcss";
+
+.testimonial {
+	display: flex;
+	flex-direction: column;
+	gap: --spacing(4);
+	background-color: var(--color-card);
+	border: solid 1px var(--color-input);
+	padding: --spacing(5);
+	border-radius: var(--radius-lg);
+
+  .testimonialContent {
+		flex: 1;
+	}
+
+  .review {
+		font-size: var(--text-lg);
+		font-style: italic;
+		text-wrap: pretty;
+	}
+
+  .testimonialFooter {
+		display: flex;
+		justify-content: space-between;
+
+    .customerName {
+			color: var(--color-muted-foreground);
+			font-size: var(--text-lg);
+		}
+
+    .rating {
+			display: flex;
+			gap: --spacing(2);
+
+      svg {
+				stroke: var(--color-amber-600);
+				fill: var(--color-amber-600);
+			}
+		}
+	}
+}
