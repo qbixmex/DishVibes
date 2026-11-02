@@ -23,12 +23,19 @@ export const SignInOut: FC = () => {
                   size: 'icon',
                 })
               }
+              aria-label="Go to authentication"
             >
-              { !isAuthenticated ? <LogIn /> : <LogOut /> }
+              {
+                !isAuthenticated ? (
+                  <LogIn data-testid="login-icon" aria-hidden="true" />
+                ) : (
+                  <LogOut data-testid="logout-icon" aria-hidden="true" />
+                )
+              }
             </Link>
           }
         />
-        <TooltipContent side="left">
+        <TooltipContent side="left" data-testid="tooltip-content">
           { !isAuthenticated ? 'login' : 'logout' }
         </TooltipContent>
       </Tooltip>

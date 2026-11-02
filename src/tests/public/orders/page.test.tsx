@@ -5,6 +5,6 @@ describe('Test on <OrdersPage /> component', () => {
   test('Should render its content', () => {
     render(<OrdersPage />);
 
-    expect(screen.getByText('Orders Page')).toBeInTheDocument();
+    expect(screen.getByText('Orders Page')).toBeVisible();
   });
 });

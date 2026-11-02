@@ -6,7 +6,10 @@ export const FeaturesSection = () => {
   return (
     <section className={styles.features}>
       <div className={styles.header}>
-        <h2 className={styles.heading}>Place Your <span>Order</span></h2>
+        <h2 className={styles.heading}>
+          Place Your <span>Order</span>
+        </h2>
+
         <p className={styles.description}>
           We are ready to prepare your delicious meal.
         </p>

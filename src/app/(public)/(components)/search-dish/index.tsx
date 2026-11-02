@@ -25,7 +25,7 @@ export const SearchDish: FC = () => {
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.table(data);
+    console.log(data);
     form.clearErrors();
   };
 
@@ -39,6 +39,9 @@ export const SearchDish: FC = () => {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field>
+                  <label htmlFor="term" className="visually-hidden">
+                    Search dishes
+                  </label>
                   <Input
                     {...field}
                     id={field.name}

@@ -15,50 +15,76 @@ export const FooterSection = () => {
           <Logo />
           <p className={styles.slogan}>Delicious taste for you mouth.</p>
           <div className={styles.contactData}>
-            <Phone />
+            <Phone aria-hidden="true" />
             <span>+1 232-555-1232</span>
           </div>
           <div className={styles.contactData}>
-            <AtSign />
+            <AtSign aria-hidden="true" />
             <span>contact@dishvibes.com</span>
           </div>
         </div>
         <div className={styles.columnB}>
           <div className={styles.heading}>Order</div>
           <div className={styles.links}>
-            <Link href="#">Menu</Link>
-            <Link href="#">Offers</Link>
-            <Link href="#">Location</Link>
-            <Link href="#">Track Order</Link>
+            <Link href="#" title="Go to menu">Menu</Link>
+            <Link href="#" title="Go to offers">Offers</Link>
+            <Link href="#" title="Go to location">Location</Link>
+            <Link href="#" title="Go to track order">Track Order</Link>
           </div>
         </div>
         <div className={styles.columnC}>
           <div className={styles.heading}>About Us</div>
           <div className={styles.links}>
-            <Link href="#">Our History</Link>
-            <Link href="#">Frequent Questions</Link>
-            <Link href="#">Contact</Link>
+            <Link href="#" title="Go to our history">Our History</Link>
+            <Link href="#" title="Go to frequent questions">Frequent Questions</Link>
+            <Link href="#" title="Go to contact">Contact</Link>
           </div>
         </div>
         <div className={styles.columnD}>
           <div className={styles.heading}>Info</div>
           <div className={styles.links}>
-            <Link href="#">Delivery</Link>
-            <Link href="#">Privacy</Link>
-            <Link href="#">Terms</Link>
+            <Link href="#" title="Go to delivery">Delivery</Link>
+            <Link href="#" title="Go to privacy policy">Privacy</Link>
+            <Link href="#" title="Go to use terms">Terms</Link>
           </div>
         </div>
         <div className={styles.columnE}>
           <div className={styles.heading}>Social Media</div>
           <div className={styles.links}>
-            <Link href="#" className={styles.socialLink}><Facebook /> Facebook</Link>
-            <Link href="#" className={styles.socialLink}><X /> Twitter X</Link>
-            <Link href="#" className={styles.socialLink}><Instagram /> Instagram</Link>
-            <Link href="#" className={styles.socialLink}><TikTok /> TikTok</Link>
+            <Link
+              href="#"
+              className={styles.socialLink}
+              title="Go to facebook"
+            >
+              <Facebook aria-hidden="true" /> Facebook
+            </Link>
+            <Link
+              href="#"
+              className={styles.socialLink}
+              title="Go to twitter x"
+            >
+              <X aria-hidden="true" /> Twitter X
+            </Link>
+            <Link
+              href="#"
+              className={styles.socialLink}
+              title="Go to instagram"  
+            >
+              <Instagram aria-hidden="true" /> Instagram
+            </Link>
+            <Link
+              href="#"
+              className={styles.socialLink}
+              title="Go to tiktok"
+            >
+              <TikTok aria-hidden="true" /> TikTok
+            </Link>
           </div>
         </div>
       </div>
-      <p className={styles.copyright}>© 2026 Food Studio. All rights reserved.</p>
+      <p className={styles.copyright} role="status">
+        &copy; 2026 Food Studio. All rights reserved.
+      </p>
     </section>
   );
 };

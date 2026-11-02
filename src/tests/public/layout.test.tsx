@@ -12,7 +12,7 @@ vi.mock('@/app/(public)/(components)/logo', () => ({
   Logo: () => <div data-testid="logo" />,
 }));
 
-vi.mock('@/app/(public)/(components)/main-navigation', () => ({
+vi.mock('@/app/(public)/(components)/main-navigation/main-navigation', () => ({
   MainNavigation: () => <div data-testid="main-navigation" />,
 }));
 
@@ -59,19 +59,19 @@ describe('Test on <PublicLayout /> component', () => {
   test('Should wrap the layout with <Providers />', () => {
     renderComponent();
 
-    expect(screen.getByTestId('providers')).toBeInTheDocument();
+    expect(screen.getByTestId('providers')).toBeVisible();
   });
 
   test('Should render the header navigation', () => {
     renderComponent();
 
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
+    expect(screen.getByRole('navigation')).toBeVisible();
   });
 
   test('Should render the footer', () => {
     renderComponent();
 
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toBeVisible();
   });
 
   test.each([
@@ -85,12 +85,12 @@ describe('Test on <PublicLayout /> component', () => {
   ])('Should render the <%s /> component in the header', (testId) => {
     renderComponent();
 
-    expect(screen.getByTestId(testId)).toBeInTheDocument();
+    expect(screen.getByTestId(testId)).toBeVisible();
   });
 
   test('Should render the <footer-section /> component', () => {
     renderComponent();
 
-    expect(screen.getByTestId('footer-section')).toBeInTheDocument();
+    expect(screen.getByTestId('footer-section')).toBeVisible();
   });
 });

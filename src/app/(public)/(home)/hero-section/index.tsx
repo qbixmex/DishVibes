@@ -9,17 +9,24 @@ export const HeroSection: FC = () => {
     <section className={styles.heroSection}>
       <div className={styles.heroInformation}>
         <h2 className={styles.heroHeading}>
-          <span>Great</span>&nbsp;
+          <span>Great</span>{' '}
           <span>Meals</span>
         </h2>
         <div className={styles.heroButtons}>
-          <button
+          <Link
+            href="#"
             className={styles.ctaOrder}
-            onClick={() => {}}
           >
-            Order Now <ArrowRight />
-          </button>
-          <Link href="#" className={styles.ctaMenu}>Explore menu</Link>
+            Order Now{' '}
+            <ArrowRight aria-hidden="true" />
+          </Link>
+
+          <Link
+            href="#"
+            className={styles.ctaMenu}
+          >
+            Explore menu
+          </Link>
         </div>
       </div>
       <figure className={styles.heroGraphic}>

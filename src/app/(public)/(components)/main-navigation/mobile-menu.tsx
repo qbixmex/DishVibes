@@ -17,9 +17,11 @@ export const MobileMenu = () => {
     <div className={styles.mobileMenuButton}>
       <Button
         variant="outline"
+        type="button"
         onClick={() => setOpen(true)}
+        aria-label="Open menu"
       >
-        <Menu />
+        <Menu aria-hidden="true" />
       </Button>
 
       {
@@ -43,8 +45,9 @@ export const MobileMenu = () => {
               onClick={() => setOpen(false)}
               variant="ghost"
               className={styles.closeMenu}
+              aria-label="Close menu"
             >
-              <X />
+              <X aria-hidden="true" />
             </Button>
           </div>
         )

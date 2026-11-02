@@ -44,7 +44,7 @@ export const CategoryItem: FC<Props> = ({ category }) => {
           )
         }
       >
-        <Icon />
+        <Icon aria-hidden="true" />
       </div>
       <p
         className={

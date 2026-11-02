@@ -14,7 +14,7 @@ export const Logo: FC = () => {
     <Link href="/" title="Go to home">
       <div className={styles.logo}>
         <figure>
-          <Utensils />
+          <Utensils aria-hidden="true" />
         </figure>
         <span className={cn({ [styles.currentPath]: path === '/' })}>
           Dish Vibes

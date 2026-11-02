@@ -1,5 +1,5 @@
-import HomePage from "@/app/(public)/page";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
+import HomePage from '@/app/(public)/page';
 
 vi.mock('@/app/(public)/(home)/hero-section', () => ({
   HeroSection: () => <div data-testid="hero-section" />,
@@ -26,19 +26,16 @@ describe('Test on <HomePage /> component', () => {
 
   test('Should contains <HeroSection /> component', () => {
     renderComponent();
-    const section = screen.queryByTestId('hero-section');
-    expect(section).toBeInTheDocument();
+    expect(screen.getByTestId('hero-section')).toBeVisible();
   });
 
   test('Should contains <DishesSection />', () => {
     renderComponent();
-    const section = screen.queryByTestId('dishes-section');
-    expect(section).toBeInTheDocument();
+    expect(screen.getByTestId('dishes-section')).toBeVisible();
   });
 
   test('Should contains <FeaturesSection />', () => {
     renderComponent();
-    const section = screen.queryByTestId('features-section');
-    expect(section).toBeInTheDocument();
+    expect(screen.getByTestId('features-section')).toBeVisible();
   });
 });

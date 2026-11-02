@@ -28,9 +28,9 @@ export const ThemeSwitcher: FC = () => {
             render={
               <DropdownMenuTrigger
                 render={
-                  <Button variant="outline" size="icon" aria-label="Theme">
-                    <Sun className={styles.lightIcon} />
-                    <Moon className={styles.darkIcon} />
+                  <Button variant="outline" size="icon" aria-label="Theme switcher">
+                    <Sun className={styles.lightIcon} aria-hidden="true" />
+                    <Moon className={styles.darkIcon} aria-hidden="true" />
                   </Button>
                 }
               />
@@ -42,19 +42,19 @@ export const ThemeSwitcher: FC = () => {
               onClick={() => setTheme("light")}
               className="w-full inline-flex justify-between"
             >
-              Light <Sun />
+              Light <Sun aria-hidden="true" />
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => setTheme("dark")}
               className="w-full inline-flex justify-between"
             >
-              Dark <Moon />
+              Dark <Moon aria-hidden="true" />
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => setTheme("system")}
               className="w-full inline-flex justify-between"
             >
-              System <Monitor />
+              System <Monitor aria-hidden="true" />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

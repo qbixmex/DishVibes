@@ -13,10 +13,13 @@ export const DishItem: FC<Props> = ({ dish }) => {
     <Card>
       <CardHeader>
         {dish.imageUrl === '' ? (
-          <div className={styles.dishPlaceholderImage}>
-            <Triangle />
-            <Circle />
-          </div>
+          <figure
+            className={styles.dishPlaceholderImage}
+            data-testid="image-placeholder"
+          >
+            <Triangle aria-hidden="true" />
+            <Circle aria-hidden="true" />
+          </figure>
         ) : (
           <Image
             src={dish.imageUrl}
@@ -42,10 +45,14 @@ export const DishItem: FC<Props> = ({ dish }) => {
       <CardFooter>
         <div className={styles.footer}>
           <div>
-            <p className={styles.dishPrice}>${dish.price}</p>
+            <p className={styles.dishPrice} role="status">
+              ${dish.price}
+            </p>
           </div>
           <div>
-            <Button className={styles.dishCtaButton}>add order</Button>
+            <Button className={styles.dishCtaButton}>
+              add order
+            </Button>
           </div>
         </div>
       </CardFooter>

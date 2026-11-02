@@ -19,6 +19,7 @@ export const DishesSection: FC = () => {
   return (
     <section className={styles.dishesSelector}>
       <CategoriesSelector />
+
       <Suspense
         key={categoryId ?? 'featured'}
         fallback={<DishesSkeleton />}

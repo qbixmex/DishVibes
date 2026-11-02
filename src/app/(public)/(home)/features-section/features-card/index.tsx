@@ -17,9 +17,11 @@ export const FeaturesCard: FC<Props> = ({ feature, step }) => {
         <p className={styles.cardDescription}>{description}</p>
       </div>
       <figure>
-        <Icon className={styles.cardIcon} />
+        <Icon className={styles.cardIcon} aria-hidden="true" />
       </figure>
-      <span className={styles.cardStep}>{step}</span>
+      <span className={styles.cardStep} role="status">
+        <span className="visually-hidden">Preparation step </span>{step}
+      </span>
     </section>
   );
 };

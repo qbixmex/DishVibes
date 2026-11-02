@@ -5,6 +5,6 @@ describe('Test on <MenuPage /> component', () => {
   test('Should render its content', () => {
     render(<MenuPage />);
 
-    expect(screen.getByText('Menu Page')).toBeInTheDocument();
+    expect(screen.getByText('Menu Page')).toBeVisible();
   });
 });

@@ -7,6 +7,7 @@ export default defineConfig({
     setupFiles: './src/tests/setup.ts',
     css: false,
     mockReset: true,
+    pool: 'vmThreads',
   },
   resolve: {
     tsconfigPaths: true,
