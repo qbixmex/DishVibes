@@ -3,6 +3,7 @@ import { HeroSection } from "./(home)/hero-section";
 import { DishesSection } from "./(home)/dishes-section";
 import { FeaturesSection } from "./(home)/features-section";
 import { FeedbackSection } from "./(home)/feedback-section";
+import { FAQSection } from "./(home)/faq-section";
 
 const HomePage: FC = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage: FC = () => {
       <HeroSection />
       <DishesSection />
       <FeaturesSection />
+      <FAQSection />
       <FeedbackSection />
     </section>
   );

@@ -13,6 +13,10 @@ vi.mock('@/app/(public)/(home)/features-section', () => ({
   FeaturesSection: () => <div data-testid="features-section" />,
 }));
 
+vi.mock('@/app/(public)/(home)/faq-section', () => ({
+  FAQSection: () => <div data-testid="faq-section" />,
+}));
+
 describe('Test on <HomePage /> component', () => {
   const renderComponent = () => {
     render(<HomePage />);
@@ -37,5 +41,10 @@ describe('Test on <HomePage /> component', () => {
   test('Should contains <FeaturesSection />', () => {
     renderComponent();
     expect(screen.getByTestId('features-section')).toBeVisible();
+  });
+
+  test('Should contains <FAQSection />', () => {
+    renderComponent();
+    expect(screen.getByTestId('faq-section')).toBeVisible();
   });
 });

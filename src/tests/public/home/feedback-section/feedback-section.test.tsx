@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import { FeedbackSection } from '@/app/(public)/(home)/feedback-section';
-import { testimonials } from '@/app/(public)/(home)/dishes-section/data';
+import { testimonials } from '@/app/(public)/(home)/feedback-section/data';
 
 describe('Test on <FeedbackSection /> component', () => {
   test('Should render an accessible region with its heading and description', () => {
@@ -24,6 +24,10 @@ describe('Test on <FeedbackSection /> component', () => {
 
     expect(list).toBeVisible();
     expect(items).toHaveLength(testimonials.length);
+
+    items.forEach((item) => {
+      expect(within(item).getByRole('figure')).toBeVisible();
+    });
   });
 
   test('Should render each review with its author', () => {

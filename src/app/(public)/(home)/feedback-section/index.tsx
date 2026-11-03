@@ -1,6 +1,6 @@
-import { testimonials } from '../dishes-section/data';
-import styles from './styles.module.css';
 import { Testimonial } from './testimonial';
+import { testimonials } from './data';
+import styles from './styles.module.css';
 
 export const FeedbackSection = () => {
   return (
@@ -18,13 +18,13 @@ export const FeedbackSection = () => {
         </p>
       </div>
 
-      <ul className={styles.testimonials} role="list">
+      <div className={styles.testimonials} role="list">
         {testimonials.map(({ id, ...testimonial }) => (
-          <li key={id} className={styles.testimonialItem}>
+          <div key={id} className={styles.testimonialItem} role="listitem">
             <Testimonial testimonial={testimonial} />
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };

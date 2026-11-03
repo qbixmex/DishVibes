@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '8d750a9a-c71e-4788-8807-7cd803e5ffab',
     review: 'I liked the Chicago style pizza, I recommend specially if you\'re hungry, the restaurant is cozy and clean.',
-    customerName: 'Juan López',
+    customerName: 'Charles Dickinson',
     rating: 3,
   },
 ];
