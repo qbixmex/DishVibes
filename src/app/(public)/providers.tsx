@@ -19,6 +19,8 @@ export const Providers: FC<Props> = ({ children }) => {
         position="top-right"
         toastOptions={{ style: { width: 400 } }}
         richColors
+        duration={3000}
+        theme='system'
       />
     </>
   );
