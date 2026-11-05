@@ -1,0 +1,38 @@
+@reference "#globals";
+
+.field {
+	width: 100%;
+}
+
+.stepper {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: --spacing(1);
+	width: 100%;
+	padding: --spacing(1);
+	border: solid 1px var(--color-input);
+	border-radius: var(--radius-md);
+	background-color: --alpha(var(--color-background) / 60%);
+}
+
+.input {
+	width: 100%;
+	min-width: 0;
+	border: 0;
+	background-color: transparent;
+	text-align: center;
+	font-family: var(--font-mono);
+	font-size: var(--text-lg);
+	font-weight: 600;
+	color: var(--color-foreground);
+	outline: none;
+
+	appearance: textfield;
+
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		appearance: none;
+		margin: 0;
+	}
+}

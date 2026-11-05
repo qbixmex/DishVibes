@@ -1,0 +1,204 @@
+@reference "#globals";
+
+.dishDetails {
+	margin-inline: auto;
+	padding-inline: --spacing(5);
+	display: flex;
+	flex-direction: column;
+	gap: --spacing(5);
+
+	@apply container;
+
+	@variant md {
+		padding-block: --spacing(12) --spacing(20);
+	}
+}
+
+.backLink {
+	display: inline-flex;
+	align-items: center;
+	gap: --spacing(2);
+	width: fit-content;
+	font-family: var(--font-sans);
+	font-size: var(--text-sm);
+	font-weight: 600;
+	color: var(--color-muted-foreground);
+	transition: color 150ms ease;
+
+	svg {
+		width: --spacing(4);
+		height: --spacing(4);
+	}
+
+	&:hover {
+		color: var(--color-primary);
+	}
+}
+
+.columns {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: --spacing(8);
+	align-items: start;
+
+	@variant xl {
+		grid-template-columns: repeat(2, minmax(250px, 1fr));
+		gap: --spacing(12);
+	}
+}
+
+.imageWrapper {
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+	border: solid 1px --alpha(var(--color-input) / 60%);
+	border-radius: var(--radius-2xl);
+	background-color: --alpha(var(--color-input) / 40%);
+}
+
+.dishImage {
+	display: block;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: contain;
+	object-position: center;
+}
+
+.dishPlaceholderImage {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	background-color: --alpha(var(--color-input) / 50%);
+	border-radius: var(--radius-lg);
+	padding: --spacing(5);
+
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+
+		&:nth-child(1) {
+			width: 160px;
+			height: 160px;
+			stroke: var(--color-gray-600);
+			fill: var(--color-gray-600);
+			margin-top: calc(var(--spacing) * -8);
+			margin-left: calc(var(--spacing) * -8);
+		}
+
+		&:nth-child(2) {
+			width: 130px;
+			height: 130px;
+			stroke: var(--color-gray-600);
+			fill: var(--color-gray-600);
+			margin-top: calc(var(--spacing) * 5);
+			margin-left: calc(var(--spacing) * 5);
+		}
+	}
+}
+
+.categoryBadge {
+	position: absolute;
+	top: --spacing(4);
+	left: --spacing(4);
+	padding: --spacing(1) --spacing(3);
+	border-radius: var(--radius-4xl);
+	background-color: --alpha(var(--color-background) / 85%);
+	border: solid 1px --alpha(var(--color-input) / 70%);
+	backdrop-filter: blur(6px);
+	font-family: var(--font-heading);
+	font-size: var(--text-xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-foreground);
+}
+
+.columnTwo {
+	display: flex;
+	flex-direction: column;
+	gap: --spacing(8);
+	min-width: 0;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: --spacing(3);
+}
+
+.dishName {
+	font-family: var(--font-heading);
+	font-size: var(--text-3xl);
+	font-weight: 900;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+	text-wrap: balance;
+
+	@variant md {
+		font-size: var(--text-4xl);
+	}
+}
+
+.dishDescription {
+	font-family: var(--font-sans);
+	font-size: var(--text-lg);
+	font-style: italic;
+	line-height: var(--text-lg--line-height);
+	color: --alpha(var(--color-muted-foreground) / 90%);
+}
+
+.dishPrice {
+	margin-top: --spacing(1);
+	font-family: var(--font-mono);
+	font-size: var(--text-3xl);
+	font-weight: 700;
+	color: var(--color-amber-500);
+}
+
+.backLinkSkeleton {
+	width: 130px;
+	height: --spacing(4);
+}
+
+.imageSkeleton {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--radius-2xl);
+}
+
+.titleSkeleton {
+	width: 70%;
+	height: --spacing(9);
+}
+
+.lineSkeleton {
+	width: 100%;
+	height: --spacing(4);
+}
+
+.priceSkeleton {
+	width: 110px;
+	height: --spacing(8);
+	margin-top: --spacing(2);
+}
+
+.formSkeleton {
+	display: flex;
+	flex-direction: column;
+	gap: --spacing(6);
+}
+
+.fieldSkeleton {
+	width: 100%;
+	height: --spacing(24);
+	border-radius: var(--radius-md);
+}
+
+.buttonSkeleton {
+	width: 100%;
+	height: 52px;
+	border-radius: var(--radius-md);
+}

@@ -1,0 +1,8 @@
+@reference "#globals";
+
+.textarea {
+	min-height: --spacing(24);
+	font-family: var(--font-sans);
+	font-size: var(--text-sm);
+	resize: none;
+}
