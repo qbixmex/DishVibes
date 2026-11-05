@@ -36,6 +36,26 @@ describe('Test on <DishItem /> component', () => {
     expect(image.getAttribute('src')).toContain('pepperoni-pizza.webp');
   });
 
+  test('Should link the image and the title to the dish page', () => {
+    render(<DishItem dish={createDish()} />);
+
+    const titleLink = screen.getByRole('link', { name: 'Pepperoni Pizza' });
+    const image = screen.getByAltText(/pepperoni pizza/i);
+    const imageLink = image.closest('a');
+
+    expect(titleLink).toHaveAttribute('href', '/menu/pepperoni-pizza');
+    expect(imageLink).toHaveAttribute('href', '/menu/pepperoni-pizza');
+  });
+
+  test('Should expose only one accessible link per dish', () => {
+    render(<DishItem dish={createDish()} />);
+
+    const links = screen.getAllByRole('link');
+
+    expect(links).toHaveLength(1);
+    expect(links[0]).toHaveAccessibleName('Pepperoni Pizza');
+  });
+
   test('Should truncate names longer than 26 characters', () => {
     const longName = 'x'.repeat(27);
 

@@ -7,6 +7,28 @@
 	font-family: var(--font-heading);
 }
 
+.dishImageLink {
+	display: block;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+}
+
+.dishNameLink {
+	color: inherit;
+	text-decoration: none;
+	transition: color 150ms ease;
+
+	&:hover {
+		color: var(--color-primary);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-ring);
+		outline-offset: 2px;
+		border-radius: var(--radius-sm);
+	}
+}
+
 .dishPlaceholderImage {
 	position: relative;
 	background-color: --alpha(var(--color-input) / 50%);
