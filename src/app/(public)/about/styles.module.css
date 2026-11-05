@@ -1,1 +1,90 @@
 @reference "tailwindcss";
+.history {
+	margin-bottom: --spacing(10);
+	header {
+		margin-bottom: --spacing(10);
+		h1 {
+			font-size: var(--text-4xl);
+			line-height: var(--text-4xl--line-height);
+			font-family: var(--font-heading);
+			font-weight: 900;
+			text-transform: uppercase;
+			span {
+				color: var(--color-primary);
+			}
+		}
+	}
+
+  .layout {
+    display: flex;
+    gap: --spacing(10);
+
+    .columnOne {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: --spacing(5);
+
+      .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h2 {
+          font-size: var(--text-2xl);
+          line-height: var(--text-2xl--line-height);
+          font-family: var(--font-heading);
+          font-weight: 700;
+        }
+  
+        p {
+          font-size: var(--text-xl);
+          font-family: var(--font-sans) sans-serif;
+          font-weight: 600;
+          font-style: italic;
+          color: var(--color-muted-foreground);
+          text-wrap: pretty;
+        }
+      }
+
+
+      .linkContainer {
+        display: flex;
+        justify-content: end;
+
+        .menuLink {
+          width: 200px;
+          text-align: center;
+          font-size: var(--text-lg);
+          font-weight: 700;
+          background-color: var(--color-primary);
+          color: var(--color-orange-50);
+          border-radius: var(--radius-lg);
+          padding: --spacing(5);
+          transition:
+            background-color 300ms ease-in-out,
+            color 300ms ease-in-out;
+
+          @variant hover {
+            background-color: var(--color-orange-800);
+            color: var(--color-orange-100);
+          }
+        }
+      }
+		}
+
+    .columnTwo {
+      flex: 1;
+
+      .contentImage {
+        width: 100%;
+        max-width: 768px;
+        height: 650px;
+        object-fit: cover;
+        object-position: 0 -210px;
+        border-radius: var(--radius-md);
+      }
+    }
+	}
+}
