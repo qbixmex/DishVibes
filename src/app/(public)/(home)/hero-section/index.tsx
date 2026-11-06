@@ -22,7 +22,7 @@ export const HeroSection: FC = () => {
           </Link>
 
           <Link
-            href="#"
+            href="/menu"
             className={styles.ctaMenu}
           >
             Explore menu

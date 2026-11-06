@@ -26,18 +26,18 @@ export const FooterSection = () => {
         <div className={styles.columnB}>
           <div className={styles.heading}>Order</div>
           <div className={styles.links}>
-            <Link href="#" title="Go to menu">Menu</Link>
-            <Link href="#" title="Go to offers">Offers</Link>
-            <Link href="#" title="Go to location">Location</Link>
-            <Link href="#" title="Go to track order">Track Order</Link>
+            <Link href="/menu" title="Go to menu">Menu</Link>
+            <Link href="/offers" title="Go to offers">Offers</Link>
+            <Link href="/location" title="Go to location">Location</Link>
+            <Link href="/track-order" title="Go to track order">Track Order</Link>
           </div>
         </div>
         <div className={styles.columnC}>
           <div className={styles.heading}>About Us</div>
           <div className={styles.links}>
-            <Link href="#" title="Go to our history">Our History</Link>
+            <Link href="/about" title="Go to our history">Our History</Link>
             <Link href="#" title="Go to frequent questions">Frequent Questions</Link>
-            <Link href="#" title="Go to contact">Contact</Link>
+            <Link href="/contact" title="Go to contact">Contact</Link>
           </div>
         </div>
         <div className={styles.columnD}>

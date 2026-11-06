@@ -53,7 +53,7 @@ describe('Test on <AboutPage /> component', () => {
     const menuLink = screen.getByRole('link', { name: /explore menu/i });
 
     expect(menuLink).toBeVisible();
-    expect(menuLink).toHaveAttribute('href', '#');
+    expect(menuLink).toHaveAttribute('href', '/menu');
   });
 
   test('Should render the restaurant image', () => {

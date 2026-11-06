@@ -33,7 +33,7 @@ export const FAQSection = () => {
               </div>
               <div className={styles.cardInfoColumnTwo}>
                 <Link
-                  href="#"
+                  href="/contact"
                   className={styles.contactLink}
                 >
                   Contact Us

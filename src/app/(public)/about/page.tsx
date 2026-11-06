@@ -28,7 +28,7 @@ const AboutPage: FC = () => {
 
           <div className={styles.linkContainer}>
             <Link
-              href="#"
+              href="/menu"
               className={styles.menuLink}
             >
               Explore Menu

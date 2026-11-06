@@ -40,7 +40,7 @@ describe('Test on <FAQSection /> component', () => {
     const contactLink = screen.getByRole('link', { name: /contact us/i });
 
     expect(contactLink).toBeVisible();
-    expect(contactLink).toHaveAttribute('href', '#');
+    expect(contactLink).toHaveAttribute('href', '/contact');
   });
 
   test('Should render one question per inquiry', () => {
