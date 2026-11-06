@@ -13,7 +13,12 @@ export const DishItem: FC<Props> = ({ dish }) => {
   const dishHref = `/menu/${dish.slug}`;
 
   return (
-    <Card>
+    <Card className={styles.dishCard}>
+      {dish.featured && (
+        <span className={styles.featuredBadge} data-testid="featured-badge">
+          Featured
+        </span>
+      )}
       <CardHeader>
         <Link
           href={dishHref}

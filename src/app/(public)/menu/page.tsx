@@ -1,9 +1,21 @@
 import type { FC } from "react";
-// import styles from ".styles.module.css";
+import { Suspense } from "react";
+import { MenuView } from "./(components)/menu-view";
+import { DishesSkeleton } from "./(components)/dishes-grid/dishes-skeleton";
 
-const MenuPage: FC = () => {
+type Props = Readonly<{
+  searchParams: Promise<{
+    category?: string;
+    page?: string;
+    limit?: string;
+  }>;
+}>;
+
+const MenuPage: FC<Props> = ({ searchParams }) => {
   return (
-    <p>Menu Page</p>
+    <Suspense fallback={<DishesSkeleton />}>
+      <MenuView searchParams={searchParams} />
+    </Suspense>
   );
 };
 

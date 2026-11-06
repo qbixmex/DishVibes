@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.selector {
+  margin-bottom: --spacing(10);
+}

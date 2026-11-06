@@ -1,5 +1,28 @@
 @reference "#globals";
 
+.dishCard {
+	position: relative;
+}
+
+.featuredBadge {
+	position: absolute;
+	top: --spacing(3);
+	right: --spacing(3);
+	z-index: 10;
+	padding: --spacing(1) --spacing(3);
+	border-radius: var(--radius-4xl);
+	background-color: var(--color-amber-500);
+	color: var(--color-amber-950);
+	font-family: var(--font-heading);
+	font-size: var(--text-xs);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	box-shadow: 0 1px 3px --alpha(var(--color-foreground) / 20%);
+	pointer-events: none;
+}
+
 .dishName {
 	font-size: var(--text-lg);
 	line-height: var(--text-lg--line-height);

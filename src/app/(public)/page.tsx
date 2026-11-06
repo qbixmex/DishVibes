@@ -6,12 +6,16 @@ import { BookingSection } from "./(home)/booking-section";
 import { FeedbackSection } from "./(home)/feedback-section";
 import { FAQSection } from "./(home)/faq-section";
 
-const HomePage: FC = () => {
+type Props = Readonly<{
+  searchParams: Promise<{ category?: string }>;
+}>;
+
+const HomePage: FC<Props> = ({ searchParams }) => {
   return (
     <section className="mb-10">
       <h1 className="visually-hidden">Dish Vibes</h1>
       <HeroSection />
-      <DishesSection />
+      <DishesSection searchParams={searchParams} />
       <FeaturesSection />
       <BookingSection />
       <FeedbackSection />

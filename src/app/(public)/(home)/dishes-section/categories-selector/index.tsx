@@ -1,44 +1,44 @@
 'use client';
 
 import type { FC } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { CategoryItem } from './category-item';
-import { categories } from '@/shared/data/categories';
-import styles from './styles.module.css';
+import { usePathname, useRouter } from 'next/navigation';
+import {
+  CategoriesSelector as SharedCategoriesSelector,
+} from '@/app/(public)/(components)/categories-selector';
+import { firstCategoryId } from '@/shared/data/categories';
 
-export const CategoriesSelector: FC = () => {
-  const [emblaRef] = useEmblaCarousel({
-    align: 'start',
-    containScroll: 'trimSnaps',
-    dragFree: true,
-    breakpoints: {
-      '(min-width: 1024px)': { active: false },
-    },
-  });
+type Props = Readonly<{
+  searchParams: { category?: string };
+}>;
+
+export const CategoriesSelector: FC<Props> = ({ searchParams }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const currentCategory = searchParams.category ?? null;
+  const selectedCategoryId = currentCategory ?? firstCategoryId;
+
+  const handleSelect = (categoryId: string) => {
+    const isFeatured = categoryId === firstCategoryId;
+    const nextCategory =
+      isFeatured || categoryId === selectedCategoryId
+        ? null
+        : categoryId;
+
+    if (nextCategory === currentCategory) return;
+
+    const params = new URLSearchParams();
+
+    if (nextCategory) params.set('category', nextCategory);
+
+    const query = params.toString();
+
+    router.push(query ? `${pathname}?${query}` : pathname, { scroll: false });
+  };
 
   return (
-    <div className={styles.dishesSection}>
-      <div
-        ref={emblaRef}
-        className={styles.viewport}
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Categories"
-      >
-        <div className={styles.categories}>
-          {categories.map((category, index) => (
-            <div
-              key={category.id}
-              className={styles.slide}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${index + 1} of ${categories.length}`}
-            >
-              <CategoryItem category={category} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <SharedCategoriesSelector
+      selectedCategoryId={selectedCategoryId}
+      onSelect={handleSelect}
+    />
   );
 };

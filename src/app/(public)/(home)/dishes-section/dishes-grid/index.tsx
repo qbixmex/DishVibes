@@ -1,7 +1,7 @@
 'use client';
 
 import { use, type FC } from 'react';
-import { DishItem } from './dish-item';
+import { DishItem } from '../../../(components)/dish-item';
 import { getHomeDishes } from '../../actions/get-home-dishes';
 import styles from './styles.module.css';
 

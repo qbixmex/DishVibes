@@ -1,0 +1,16 @@
+@reference "tailwindcss";
+
+.dishesGrid {
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr);
+  gap: --spacing(5);
+
+  @variant md {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  @variant lg {
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    gap: --spacing(8);
+  }
+}

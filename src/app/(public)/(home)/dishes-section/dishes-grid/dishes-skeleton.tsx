@@ -1,4 +1,4 @@
-import { DishSkeleton } from "./dish-item/dish-skeleton";
+import { DishSkeleton } from "../../../(components)/dish-item/dish-skeleton";
 
 export const DishesSkeleton = () => {
   return (
