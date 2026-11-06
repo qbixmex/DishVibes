@@ -1,7 +1,6 @@
-import { Hamburger, LayoutGrid, Pizza, type LucideIcon } from 'lucide-react';
-import { CategoryItem } from '@/app/(public)/(home)/dishes-section/categories-selector/category-item';
+import { LayoutGrid, Pizza, type LucideIcon } from 'lucide-react';
+import { CategoryItem } from '@/app/(public)/(components)/categories-selector/category-item';
 import type { Category } from '@/shared/interfaces/category.interface';
-import { useDishCategoryStore } from '@/store/use-dish-category-store';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -19,102 +18,57 @@ const pizzaCategory: CategoryFixture = {
   icon: Pizza,
 };
 
-const burgersCategory: CategoryFixture = {
-  id: '9deba07b',
-  name: 'Burgers',
-  icon: Hamburger,
-};
-
 describe('Test on <CategoryItem /> component', () => {
-  beforeEach(() => {
-    useDishCategoryStore.setState({ categoryId: null });
-  });
-
-  const renderCategories = (...categories: CategoryFixture[]) => {
+  test('Should render the category name', () => {
     render(
-      <>
-        {categories.map((category) => (
-          <CategoryItem key={category.id} category={category} />
-        ))}
-      </>,
+      <CategoryItem
+        category={featuredCategory}
+        isSelected={false}
+        onSelect={vi.fn()}
+      />,
     );
 
-    return {
-      user: userEvent.setup(),
-      item: (category: CategoryFixture) => screen.getByText(category.name),
-    };
-  };
-
-  test('Should mark Featured as selected when there is no category selected', () => {
-    const { item } = renderCategories(featuredCategory);
-
-    expect(item(featuredCategory)).toHaveClass('text-orange-500');
+    expect(screen.getByText(featuredCategory.name)).toBeVisible();
   });
 
-  test('Should mark the category as selected when it matches the store', () => {
-    useDishCategoryStore.setState({ categoryId: pizzaCategory.id });
+  test('Should mark the item as selected when isSelected is true', () => {
+    render(
+      <CategoryItem
+        category={pizzaCategory}
+        isSelected
+        onSelect={vi.fn()}
+      />,
+    );
 
-    const { item } = renderCategories(pizzaCategory);
-
-    expect(item(pizzaCategory)).toHaveClass('text-orange-500');
+    expect(screen.getByText(pizzaCategory.name)).toHaveClass('text-orange-500');
   });
 
-  test('Should select a category on click', async () => {
-    const { user, item } = renderCategories(featuredCategory, pizzaCategory);
+  test('Should not mark the item as selected when isSelected is false', () => {
+    render(
+      <CategoryItem
+        category={pizzaCategory}
+        isSelected={false}
+        onSelect={vi.fn()}
+      />,
+    );
 
-    await user.click(item(pizzaCategory));
-
-    expect(useDishCategoryStore.getState().categoryId).toBe(pizzaCategory.id);
-    expect(item(pizzaCategory)).toHaveClass('text-orange-500');
-    expect(item(featuredCategory)).not.toHaveClass('text-orange-500');
+    expect(screen.getByText(pizzaCategory.name)).not.toHaveClass('text-orange-500');
   });
 
-  test('Should replace the selected category when clicking another one', async () => {
-    useDishCategoryStore.setState({ categoryId: burgersCategory.id });
+  test('Should call onSelect with the category id when clicked', async () => {
+    const user = userEvent.setup();
+    const onSelect = vi.fn();
 
-    const { user, item } = renderCategories(burgersCategory, pizzaCategory);
+    render(
+      <CategoryItem
+        category={pizzaCategory}
+        isSelected={false}
+        onSelect={onSelect}
+      />,
+    );
 
-    const burgers = item(burgersCategory);
+    await user.click(screen.getByText(pizzaCategory.name));
 
-    expect(burgers).toHaveClass('text-orange-500');
-
-    await user.click(item(pizzaCategory));
-
-    expect(useDishCategoryStore.getState().categoryId).toBe(pizzaCategory.id);
-    expect(item(pizzaCategory)).toHaveClass('text-orange-500');
-    expect(burgers).not.toHaveClass('text-orange-500');
-  });
-
-  test('Should deselect the category when clicking it again', async () => {
-    useDishCategoryStore.setState({ categoryId: pizzaCategory.id });
-
-    const { user, item } = renderCategories(featuredCategory, pizzaCategory);
-
-    const pizza = item(pizzaCategory);
-
-    expect(pizza).toHaveClass('text-orange-500');
-
-    await user.click(pizza);
-
-    expect(useDishCategoryStore.getState().categoryId).toBe(null);
-    expect(pizza).not.toHaveClass('text-orange-500');
-    expect(item(featuredCategory)).toHaveClass('text-orange-500');
-  });
-
-  test('Should deselect the selected category when clicking Featured', async () => {
-    useDishCategoryStore.setState({ categoryId: pizzaCategory.id });
-
-    const { user, item } = renderCategories(featuredCategory, pizzaCategory);
-
-    const pizza = item(pizzaCategory);
-
-    expect(pizza).toHaveClass('text-orange-500');
-    expect(item(featuredCategory)).not.toHaveClass('text-orange-500');
-
-    await user.click(item(featuredCategory));
-
-    expect(useDishCategoryStore.getState().categoryId).toBe(null);
-    expect(pizza).not.toHaveClass('text-orange-500');
-    expect(item(featuredCategory)).toHaveClass('text-orange-500');
+    expect(onSelect).toHaveBeenCalledWith(pizzaCategory.id);
   });
 });

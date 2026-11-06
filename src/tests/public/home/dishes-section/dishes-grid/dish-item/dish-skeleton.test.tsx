@@ -1,4 +1,4 @@
-import { DishSkeleton } from '@/app/(public)/(home)/dishes-section/dishes-grid/dish-item/dish-skeleton';
+import { DishSkeleton } from '@/app/(public)/(components)/dish-item/dish-skeleton';
 import { render } from '@testing-library/react';
 
 describe('Test on <DishSkeleton /> component', () => {

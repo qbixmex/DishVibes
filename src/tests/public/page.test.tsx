@@ -23,7 +23,7 @@ vi.mock('@/app/(public)/(home)/faq-section', () => ({
 
 describe('Test on <HomePage /> component', () => {
   const renderComponent = () => {
-    render(<HomePage />);
+    render(<HomePage searchParams={Promise.resolve({})} />);
   };
 
   test('Should render correctly', () => {

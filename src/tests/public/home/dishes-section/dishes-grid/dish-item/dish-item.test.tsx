@@ -1,4 +1,4 @@
-import { DishItem } from '@/app/(public)/(home)/dishes-section/dishes-grid/dish-item';
+import { DishItem } from '@/app/(public)/(components)/dish-item';
 import type { Dish } from '@/shared/interfaces/dish.interface';
 import { isInaccessible, render, screen } from '@testing-library/react';
 
@@ -26,6 +26,21 @@ describe('Test on <DishItem /> component', () => {
     expect(price).toBeVisible();
     expect(price).toHaveTextContent('$12');
     expect(button).toBeVisible();
+  });
+
+  test('Should render a featured badge when the dish is featured', () => {
+    render(<DishItem dish={createDish({ featured: true })} />);
+
+    const badge = screen.getByTestId('featured-badge');
+
+    expect(badge).toBeVisible();
+    expect(badge).toHaveTextContent('Featured');
+  });
+
+  test('Should not render a featured badge when the dish is not featured', () => {
+    render(<DishItem dish={createDish({ featured: false })} />);
+
+    expect(screen.queryByTestId('featured-badge')).not.toBeInTheDocument();
   });
 
   test('Should render the dish image with a descriptive alt text', () => {
