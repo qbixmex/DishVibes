@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { AddToOrderButton } from '@/shared/components/add-to-order-button';
 import type { Dish } from '@/shared/interfaces/dish.interface';
 import { Triangle, Circle } from 'lucide-react';
 import styles from './styles.module.css';
@@ -67,9 +67,9 @@ export const DishItem: FC<Props> = ({ dish }) => {
             </p>
           </div>
           <div>
-            <Button className={styles.dishCtaButton}>
+            <AddToOrderButton dish={dish} className={styles.dishCtaButton}>
               add order
-            </Button>
+            </AddToOrderButton>
           </div>
         </div>
       </CardFooter>

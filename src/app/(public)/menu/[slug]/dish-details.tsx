@@ -57,7 +57,7 @@ export const DishDetails: FC<Props> = ({ dish }) => {
             <p className={styles.dishPrice}>{formatCurrency(dish.price)}</p>
           </header>
 
-          <DishOrderForm price={dish.price} />
+          <DishOrderForm dish={dish} />
         </div>
       </div>
     </article>

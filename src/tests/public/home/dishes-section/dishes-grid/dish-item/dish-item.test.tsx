@@ -1,6 +1,16 @@
 import { DishItem } from '@/app/(public)/(components)/dish-item';
 import type { Dish } from '@/shared/interfaces/dish.interface';
+import { useOrderStore } from '@/shared/stores/order-store';
+import { resetOrderStore } from '@/tests/utils/order';
 import { isInaccessible, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+vi.mock('sonner', () => ({
+  toast: {
+    success: vi.fn(),
+    error: vi.fn(),
+  },
+}));
 
 const createDish = (overrides: Partial<Dish> = {}): Dish => ({
   id: '029a42b3-9914-492a-bd70-f0d2c4742b19',
@@ -15,6 +25,41 @@ const createDish = (overrides: Partial<Dish> = {}): Dish => ({
 });
 
 describe('Test on <DishItem /> component', () => {
+  beforeEach(() => {
+    resetOrderStore();
+  });
+
+  test('Should add the dish to the order when the CTA is clicked', async () => {
+    const user = userEvent.setup();
+
+    render(<DishItem dish={createDish()} />);
+
+    await user.click(screen.getByRole('button', { name: /add order/i }));
+
+    expect(useOrderStore.getState().lines).toEqual([
+      expect.objectContaining({
+        dishId: '029a42b3-9914-492a-bd70-f0d2c4742b19',
+        quantity: 1,
+        specialInstructions: '',
+        dish: expect.objectContaining({ name: 'Pepperoni Pizza' }),
+      }),
+    ]);
+  });
+
+  test('Should merge repeated additions of the same dish', async () => {
+    const user = userEvent.setup();
+
+    render(<DishItem dish={createDish()} />);
+
+    const button = screen.getByRole('button', { name: /add order/i });
+
+    await user.click(button);
+    await user.click(button);
+
+    expect(useOrderStore.getState().lines).toHaveLength(1);
+    expect(useOrderStore.getState().lines[0].quantity).toBe(2);
+  });
+
   test('Should render the dish name, description, price and CTA', () => {
     render(<DishItem dish={createDish()} />);
 

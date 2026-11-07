@@ -1,6 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'sonner';
+import { OrderHydrator } from '@/shared/components/order-hydrator';
 
 type Props = Readonly<{ children: ReactNode; }>;
 
@@ -14,6 +15,7 @@ export const Providers: FC<Props> = ({ children }) => {
         disableTransitionOnChange
       >
         {children}
+        <OrderHydrator />
       </ThemeProvider>
       <Toaster
         position="top-right"

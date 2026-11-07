@@ -6,19 +6,34 @@
   flex-direction: column;
   justify-content: center;
   margin-inline: --spacing(2);
+  color: var(--color-foreground);
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: --spacing(2);
+    border-radius: var(--radius-sm);
+  }
 }
 
 .orderQuantity {
   position: absolute;
   display: grid;
   place-content: center;
-  width: 24px;
+  min-width: 24px;
   height: 24px;
+  padding-inline: --spacing(1);
   background-color: var(--color-red-500);
   top: calc(var(--spacing) * -1);
   right: calc(var(--spacing) * -4);
-  border-radius: 50%;
+  border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1;
   color: var(--color-red-50);
 }

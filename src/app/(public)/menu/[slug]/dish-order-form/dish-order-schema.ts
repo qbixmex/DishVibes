@@ -1,7 +1,7 @@
 import z from 'zod';
+import { MAX_QUANTITY, MIN_QUANTITY } from '@/shared/constants/order';
 
-export const MIN_QUANTITY = 1;
-export const MAX_QUANTITY = 20;
+export { MAX_QUANTITY, MIN_QUANTITY };
 
 export const dishOrderSchema = z.object({
   quantity: z

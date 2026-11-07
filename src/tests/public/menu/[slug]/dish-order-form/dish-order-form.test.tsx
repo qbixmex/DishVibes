@@ -1,6 +1,18 @@
 import { DishOrderForm } from '@/app/(public)/menu/[slug]/dish-order-form';
+import type { Dish } from '@/shared/interfaces/dish.interface';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+const dish: Dish = {
+  id: 'd2f9d32f-fa53-4848-a8dc-675fce14641a',
+  name: 'Pepperoni Pizza',
+  slug: 'pepperoni-pizza',
+  imageUrl: '/images/pizzas/pepperoni-pizza.png',
+  description: 'Pepperoni slices, mozzarella cheese and tomato sauce.',
+  price: 12.95,
+  featured: true,
+  categoryId: '4fbe4d4d',
+};
 
 const { mockOnSubmit } = vi.hoisted(() => ({ mockOnSubmit: vi.fn() }));
 
@@ -26,7 +38,7 @@ vi.mock(
 
 describe('Tests on <DishOrderForm /> component', () => {
   const renderComponent = () => {
-    render(<DishOrderForm price={12.95} />);
+    render(<DishOrderForm dish={dish} />);
 
     return { user: userEvent.setup() };
   };

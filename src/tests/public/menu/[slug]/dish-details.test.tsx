@@ -4,8 +4,8 @@ import type { Dish } from '@/shared/interfaces/dish.interface';
 import { isInaccessible, render, screen } from '@testing-library/react';
 
 vi.mock('@/app/(public)/menu/[slug]/dish-order-form', () => ({
-  DishOrderForm: ({ price }: { price: number }) => (
-    <div data-testid="dish-order-form">{price}</div>
+  DishOrderForm: ({ dish }: { dish: Dish }) => (
+    <div data-testid="dish-order-form">{dish.price}</div>
   ),
 }));
 
@@ -82,7 +82,7 @@ describe('Tests on <DishDetails /> component', () => {
     expect(backLink).toHaveAttribute('href', '/menu');
   });
 
-  test('Should render the order form with the dish price', () => {
+  test('Should render the order form for the dish', () => {
     render(<DishDetails dish={createDish()} />);
 
     expect(screen.getByTestId('dish-order-form')).toHaveTextContent('12.95');

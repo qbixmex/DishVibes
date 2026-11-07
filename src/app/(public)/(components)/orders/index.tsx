@@ -1,14 +1,35 @@
-import type { FC } from "react";
-import { ConciergeBell } from "lucide-react";
-import styles from "./styles.module.css";
+'use client';
+
+import type { FC } from 'react';
+import Link from 'next/link';
+import { ConciergeBell } from 'lucide-react';
+import { PUBLIC_ROUTES } from '@/shared/constants/public.routes';
+import { useOrderCount } from '@/shared/stores/order-selectors';
+import { useOrderStore } from '@/shared/stores/order-store';
+import styles from './styles.module.css';
 
 export const Orders: FC = () => {
+  const count = useOrderCount();
+  const hydrated = useOrderStore((state) => state.hydrated);
+  const hasOrders = hydrated && count > 0;
+
   return (
-    <div className={styles.orders}>
+    <Link
+      href={PUBLIC_ROUTES.ORDERS}
+      className={styles.orders}
+      aria-label="Go to your orders"
+      title="Go to your orders"
+    >
       <ConciergeBell aria-hidden="true" />
-      <div className={styles.orderQuantity} role="status">
-        5<span className="visually-hidden"> orders in cart</span>
-      </div>
-    </div>
+
+      {hasOrders && (
+        <div className={styles.orderQuantity} role="status">
+          {count}
+          <span className="visually-hidden">
+            {count === 1 ? ' order in cart' : ' orders in cart'}
+          </span>
+        </div>
+      )}
+    </Link>
   );
 };
