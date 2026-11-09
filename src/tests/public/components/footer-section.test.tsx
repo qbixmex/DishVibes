@@ -9,16 +9,14 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '/',
 }));
 
-const orderLinks = [
+const exploreLinks = [
   { label: 'Menu', href: '/menu' },
-  { label: 'Offers', href: '/offers' },
-  { label: 'Location', href: '/location' },
-  { label: 'Track Order', href: '/track-order' },
+  { label: 'Orders', href: '/orders' },
+  { label: 'Contact', href: '/contact' },
 ];
 const aboutLinks = [
   { label: 'Our History', href: '/about' },
   { label: 'Frequent Questions', href: '#' },
-  { label: 'Contact', href: '/contact' },
 ];
 const infoLinks = ['Delivery', 'Privacy', 'Terms'];
 const socialLinks = ['Facebook', 'Twitter X', 'Instagram', 'TikTok'];
@@ -48,15 +46,15 @@ describe('Test on <FooterSection /> component', () => {
   test('Should render the footer headings', () => {
     render(<FooterSection />);
 
-    for (const heading of ['Order', 'About Us', 'Info', 'Social Media']) {
+    for (const heading of ['Explore', 'About Us', 'Info', 'Social Media']) {
       expect(screen.getByText(heading)).toBeVisible();
     }
   });
 
-  test('Should render the order links', () => {
+  test('Should render the explore links', () => {
     render(<FooterSection />);
 
-    for (const { label, href } of orderLinks) {
+    for (const { label, href } of exploreLinks) {
       const link = screen.getByRole('link', { name: label });
 
       expect(link).toHaveAttribute('href', href);
