@@ -6,6 +6,7 @@ import { FaFacebook as Facebook } from "react-icons/fa";
 import { FaXTwitter as X } from "react-icons/fa6";
 import { FaInstagram as Instagram } from "react-icons/fa";
 import { FaTiktok as TikTok } from "react-icons/fa";
+import { CONTACT_INFO } from '@/shared/data/contact';
 
 export const FooterSection = () => {
   return (
@@ -16,11 +17,11 @@ export const FooterSection = () => {
           <p className={styles.slogan}>Delicious taste for you mouth.</p>
           <div className={styles.contactData}>
             <Phone aria-hidden="true" />
-            <span>+1 232-555-1232</span>
+            <span>{CONTACT_INFO.phone}</span>
           </div>
           <div className={styles.contactData}>
             <AtSign aria-hidden="true" />
-            <span>contact@dishvibes.com</span>
+            <span>{CONTACT_INFO.email}</span>
           </div>
         </div>
         <div className={styles.columnB}>

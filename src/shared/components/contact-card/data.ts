@@ -1,5 +1,6 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from 'lucide-react';
 import { AtSign, MapPin, Phone } from 'lucide-react';
+import { CONTACT_INFO } from '@/shared/data/contact';
 
 type Detail = {
   id: string;
@@ -12,19 +13,19 @@ export const contactDetails: Detail[] = [
   {
     id: '408b',
     label: 'Phone',
-    value: '+1 232-555-1232',
+    value: CONTACT_INFO.phone,
     icon: Phone,
   },
   {
     id: 'x067',
     label: 'Email',
-    value: 'contact@dishvibes.com',
+    value: CONTACT_INFO.email,
     icon: AtSign,
   },
   {
     id: '6u2v',
     label: 'Address',
-    value: '900 Ganville Street, Vancouver, British Columbia.',
+    value: CONTACT_INFO.address,
     icon: MapPin,
   },
 ];

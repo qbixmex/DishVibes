@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { BookingForm } from './booking-form';
-import { Contact } from './contact';
+import { ContactCard } from '@/shared/components';
 import styles from './styles.module.css';
 
 export const BookingSection: FC = () => {
@@ -10,7 +10,7 @@ export const BookingSection: FC = () => {
         <BookingForm />
       </div>
       <div className={styles.columnTwo}>
-        <Contact />
+        <ContactCard />
       </div>
     </div>
   );

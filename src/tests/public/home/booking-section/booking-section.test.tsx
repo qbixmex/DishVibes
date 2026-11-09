@@ -54,7 +54,7 @@ describe('Test on <BookingSection /> component', () => {
     expect(screen.getByText('contact@dishvibes.com')).toBeVisible();
     expect(
       screen.getByText(
-        '900 Ganville Street, Vancouver, British Columbia.',
+        '900 Granville Street, Vancouver, British Columbia.',
       ),
     ).toBeVisible();
   });

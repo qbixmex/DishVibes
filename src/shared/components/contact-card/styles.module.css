@@ -2,26 +2,26 @@
 
 .contact {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  height: 100%;
   padding: --spacing(5);
-  display: flex;
-  flex-direction: column;
 
   @variant md {
     padding: --spacing(10);
   }
 
   .heading {
+    margin-bottom: --spacing(3);
     font-size: var(--text-2xl);
     line-height: var(--text-2xl--line-height);
-    text-wrap: wrap;
     font-family: var(--font-heading);
     font-weight: 900;
-    margin-bottom: --spacing(3);
     text-transform: uppercase;
+    text-wrap: wrap;
 
     @variant md {
       font-size: var(--text-4xl);
@@ -30,7 +30,7 @@
 
     span {
       color: var(--color-primary);
-		}
+    }
   }
 
   .info {
@@ -50,22 +50,22 @@
         .iconContainer {
           width: 50px;
           height: 50px;
-          background-color: var(--color-primary);
           display: flex;
           align-items: center;
           justify-content: center;
+          background-color: var(--color-primary);
           border-radius: var(--radius-sm);
 
           @variant md {
             width: 60px;
             height: 60px;
           }
-          
+
           @variant lg {
             width: 70px;
             height: 70px;
           }
-  
+
           .icon {
             width: 30px;
             height: 30px;
@@ -91,8 +91,8 @@
         .dataHeading {
           font-size: var(--text-lg);
           line-height: var(--text-lg--line-height);
-          font-weight: 700;
           font-family: var(--font-heading);
+          font-weight: 700;
 
           @variant md {
             font-size: var(--text-xl);
@@ -108,13 +108,20 @@
         .dataValue {
           font-size: var(--text-lg);
           line-height: 1.4rem;
-          text-wrap: balance;
-          font-weight: 500;
           font-family: var(--font-sans);
-          color: var(--color-muted-foreground);
+          font-weight: 500;
           font-style: italic;
+          color: var(--color-muted-foreground);
+          text-wrap: balance;
         }
       }
     }
+  }
+}
+
+.compact {
+  .info {
+    justify-content: center;
+    gap: --spacing(6);
   }
 }
