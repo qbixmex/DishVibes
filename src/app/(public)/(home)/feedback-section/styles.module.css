@@ -31,10 +31,6 @@
     grid-template-columns: repeat(1, minmax(200px, 1fr));
     gap: --spacing(5);
 
-    .testimonialItem {
-      display: flex;
-    }
-
     @variant lg {
       grid-template-columns: repeat(2, minmax(200px, 1fr));
     }
