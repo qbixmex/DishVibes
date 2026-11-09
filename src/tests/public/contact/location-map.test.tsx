@@ -1,9 +1,10 @@
-import type { ReactNode } from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { LocationMap } from '@/app/(public)/contact/(components)/location-map';
 import { LeafletMap } from '@/app/(public)/contact/(components)/location-map/leaflet-map';
 import {
+  MAP_ATTRIBUTION,
   MAP_MAX_ZOOM,
+  MAP_POSITION,
   MAP_TILE_URL,
   MAP_ZOOM,
 } from '@/app/(public)/contact/(components)/location-map/map-config';
@@ -14,10 +15,37 @@ import {
   LARGER_MAP_URL,
 } from '@/shared/data/contact';
 
-const { mockUseTheme, mockDivIcon } = vi.hoisted(() => ({
-  mockUseTheme: vi.fn(),
-  mockDivIcon: vi.fn(() => ({ icon: true })),
-}));
+const {
+  mockUseTheme,
+  mockMap,
+  mockTileLayer,
+  mockMarker,
+  mockDivIcon,
+  mockRemove,
+  mockAddTileLayer,
+  mockAddMarker,
+  mockBindPopup,
+} = vi.hoisted(() => {
+  const mockRemove = vi.fn();
+  const mockAddTileLayer = vi.fn();
+  const mockAddMarker = vi.fn();
+  const mockBindPopup = vi.fn();
+
+  return {
+    mockUseTheme: vi.fn(),
+    mockRemove,
+    mockAddTileLayer,
+    mockAddMarker,
+    mockBindPopup,
+    mockMap: vi.fn(() => ({ remove: mockRemove })),
+    mockTileLayer: vi.fn(() => ({ addTo: mockAddTileLayer })),
+    mockMarker: vi.fn(() => ({
+      addTo: mockAddMarker,
+      bindPopup: mockBindPopup,
+    })),
+    mockDivIcon: vi.fn(() => ({ icon: true })),
+  };
+});
 
 vi.mock('next/dynamic', () => ({
   default: () => () => <div data-testid="leaflet-map" />,
@@ -29,50 +57,11 @@ vi.mock('next-themes', () => ({
 
 vi.mock('leaflet', () => ({
   default: {
+    map: mockMap,
+    tileLayer: mockTileLayer,
+    marker: mockMarker,
     divIcon: mockDivIcon,
   },
-}));
-
-vi.mock('react-leaflet', () => ({
-  MapContainer: ({
-    children,
-    center,
-    zoom,
-  }: {
-    children: ReactNode;
-    center: [number, number];
-    zoom: number;
-  }) => (
-    <div
-      data-testid="map-container"
-      data-lat={center[0]}
-      data-lng={center[1]}
-      data-zoom={zoom}
-    >
-      {children}
-    </div>
-  ),
-  TileLayer: ({
-    url,
-    maxZoom,
-  }: {
-    url: string;
-    maxZoom?: number;
-  }) => (
-    <div
-      data-testid="tile-layer"
-      data-url={url}
-      data-max-zoom={maxZoom}
-    />
-  ),
-  Marker: ({ children, alt }: { children: ReactNode; alt?: string }) => (
-    <div data-testid="marker" data-alt={alt}>
-      {children}
-    </div>
-  ),
-  Popup: ({ children }: { children: ReactNode }) => (
-    <div data-testid="popup">{children}</div>
-  ),
 }));
 
 describe('Test on <LocationMap /> component', () => {
@@ -129,53 +118,75 @@ describe('Test on <LeafletMap /> component', () => {
     mockUseTheme.mockReturnValue({ resolvedTheme: 'light' });
   });
 
-  test('Should center the map on the restaurant location', () => {
+  test('Should create the map centered on the restaurant location', () => {
     render(<LeafletMap />);
 
-    const container = screen.getByTestId('map-container');
-
-    expect(container).toHaveAttribute(
-      'data-lat',
-      String(CONTACT_INFO.coordinates.lat),
-    );
-    expect(container).toHaveAttribute(
-      'data-lng',
-      String(CONTACT_INFO.coordinates.lng),
-    );
-    expect(container).toHaveAttribute('data-zoom', String(MAP_ZOOM));
     expect(
       screen.getByRole('region', {
         name: /map showing the dish vibes location/i,
       }),
     ).toBeVisible();
-  });
-
-  test('Should render the OpenStreetMap tiles', () => {
-    render(<LeafletMap />);
-
-    const tileLayer = screen.getByTestId('tile-layer');
-
-    expect(tileLayer).toHaveAttribute('data-url', MAP_TILE_URL);
-    expect(tileLayer).toHaveAttribute(
-      'data-max-zoom',
-      String(MAP_MAX_ZOOM),
+    expect(mockMap).toHaveBeenCalledWith(
+      expect.any(HTMLDivElement),
+      {
+        center: MAP_POSITION,
+        zoom: MAP_ZOOM,
+        scrollWheelZoom: false,
+      },
     );
   });
 
-  test('Should render the marker with the restaurant popup', () => {
+  test('Should add the OpenStreetMap tiles to the map', () => {
     render(<LeafletMap />);
 
-    const marker = screen.getByTestId('marker');
+    const map = mockMap.mock.results[0].value;
 
-    expect(marker).toHaveAttribute(
-      'data-alt',
-      `${CONTACT_INFO.name} location`,
+    expect(mockTileLayer).toHaveBeenCalledWith(MAP_TILE_URL, {
+      attribution: MAP_ATTRIBUTION,
+      maxZoom: MAP_MAX_ZOOM,
+    });
+    expect(mockAddTileLayer).toHaveBeenCalledWith(map);
+  });
+
+  test('Should add the marker with the restaurant popup', () => {
+    render(<LeafletMap />);
+
+    const map = mockMap.mock.results[0].value;
+
+    expect(mockMarker).toHaveBeenCalledWith(
+      MAP_POSITION,
+      expect.objectContaining({
+        icon: { icon: true },
+        alt: `${CONTACT_INFO.name} location`,
+        title: `${CONTACT_INFO.name} location`,
+      }),
     );
+    expect(mockAddMarker).toHaveBeenCalledWith(map);
+    expect(mockBindPopup).toHaveBeenCalledWith(
+      `<strong>${CONTACT_INFO.name}</strong><br />${CONTACT_INFO.address}`,
+    );
+  });
 
-    const popup = within(screen.getByTestId('popup'));
+  test('Should create a custom marker icon', () => {
+    render(<LeafletMap />);
 
-    expect(popup.getByText(CONTACT_INFO.name)).toBeVisible();
-    expect(popup.getByText(CONTACT_INFO.address)).toBeVisible();
+    expect(mockDivIcon).toHaveBeenCalledWith(
+      expect.objectContaining({
+        className: styles.marker,
+        html: '<span></span>',
+        iconSize: [36, 44],
+        iconAnchor: [18, 42],
+        popupAnchor: [0, -38],
+      }),
+    );
+  });
+
+  test('Should remove the map on unmount', () => {
+    const { unmount } = render(<LeafletMap />);
+
+    unmount();
+
+    expect(mockRemove).toHaveBeenCalledTimes(1);
   });
 
   test('Should not apply the dark filter in the light theme', () => {
@@ -198,16 +209,5 @@ describe('Test on <LeafletMap /> component', () => {
     });
 
     expect(region).toHaveClass(styles.dark);
-  });
-
-  test('Should create a custom marker icon', () => {
-    render(<LeafletMap />);
-
-    expect(mockDivIcon).toHaveBeenCalledWith(
-      expect.objectContaining({
-        iconSize: [36, 44],
-        iconAnchor: [18, 42],
-      }),
-    );
   });
 });
