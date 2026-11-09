@@ -1,20 +1,16 @@
 'use client';
 
-import type { FC } from 'react';
-import type { Dish } from '@/shared/interfaces/dish.interface';
+import type { FC, ReactNode } from 'react';
 import { useOrderStore } from '@/shared/stores/order-store';
 import { EmptyOrder } from './empty-order';
 import { OrderItems } from './order-items';
 import { OrderItemsSkeleton } from './order-items-skeleton';
-import { OrderSuggestions } from './order-suggestions';
 import { OrderSummary } from './order-summary';
 import styles from '../styles.module.css';
 
-type Props = Readonly<{
-  suggestions: Dish[];
-}>;
+type Props = Readonly<{ suggestionsSlot: ReactNode }>;
 
-export const OrdersView: FC<Props> = ({ suggestions }) => {
+export const OrdersView: FC<Props> = ({ suggestionsSlot }) => {
   const lines = useOrderStore((state) => state.lines);
   const hydrated = useOrderStore((state) => state.hydrated);
   const hasLines = lines.length > 0;
@@ -46,9 +42,7 @@ export const OrdersView: FC<Props> = ({ suggestions }) => {
         </aside>
       </div>
 
-      {suggestions.length > 0 && (
-        <OrderSuggestions suggestions={suggestions} />
-      )}
+      {suggestionsSlot}
     </article>
   );
 };

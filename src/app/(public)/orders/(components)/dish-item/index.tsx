@@ -68,62 +68,70 @@ export const DishItem: FC<Props> = ({ line }) => {
         )}
 
         <p className={styles.dishUnitPrice}>
-          {formatCurrency(dish.price)}
-          <span> each</span>
+          {formatCurrency(dish.price)}{' '}
+          <span>unit price</span>
         </p>
       </div>
 
       <div className={styles.dishActions}>
-        <div className={styles.stepper}>
+        <div className={styles.dishActionsRow}>
+          <div className={styles.stepper}>
+            <div>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-lg"
+                onClick={handleDecrement}
+                disabled={!canDecrement}
+                aria-label={`Decrease quantity of ${dish.name}`}
+              >
+                <Minus aria-hidden="true" />
+              </Button>
+            </div>
+
+            <input
+              type="number"
+              inputMode="numeric"
+              min={MIN_QUANTITY}
+              max={MAX_QUANTITY}
+              value={quantity}
+              onChange={(event) => handleQuantityChange(event.target.value)}
+              aria-label={`Quantity of ${dish.name}`}
+              className={styles.quantityInput}
+            />
+
+            <div>
+              <Button
+                type="button"
+                onClick={handleIncrement}
+                disabled={!canIncrement}
+                size="icon-lg"
+                variant="ghost"
+                aria-label={`Increase quantity of ${dish.name}`}
+              >
+                <Plus aria-hidden="true" />
+              </Button>
+            </div>
+          </div>
+
           <Button
             type="button"
-            variant="ghost"
-            size="icon-sm"
-            onClick={handleDecrement}
-            disabled={!canDecrement}
-            aria-label={`Decrease quantity of ${dish.name}`}
+            variant="outline"
+            onClick={handleDeleteOrder}
+            aria-label={`Remove ${dish.name} from order`}
+            className={styles.removeButton}
           >
-            <Minus aria-hidden="true" />
-          </Button>
-
-          <input
-            type="number"
-            inputMode="numeric"
-            min={MIN_QUANTITY}
-            max={MAX_QUANTITY}
-            value={quantity}
-            onChange={(event) => handleQuantityChange(event.target.value)}
-            aria-label={`Quantity of ${dish.name}`}
-            className={styles.quantityInput}
-          />
-
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon-sm"
-            onClick={handleIncrement}
-            disabled={!canIncrement}
-            aria-label={`Increase quantity of ${dish.name}`}
-          >
-            <Plus aria-hidden="true" />
+            <Trash aria-hidden="true" />
           </Button>
         </div>
 
-        <p className={styles.dishTotal}>
-          <span className="visually-hidden">Line total </span>
-          {formatCurrency(dish.price * quantity)}
-        </p>
-
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon-sm"
-          onClick={handleDeleteOrder}
-          aria-label={`Remove ${dish.name} from order`}
-          className={styles.removeButton}
-        >
-          <Trash aria-hidden="true" />
-        </Button>
+        <div className={styles.dishActionsRow}>
+          <p className={styles.dishTotal}>
+            <span className="visually-hidden">Line total </span>
+            {formatCurrency(dish.price * quantity)}{' '}
+            <span>total</span>
+          </p>
+        </div>
       </div>
     </article>
   );

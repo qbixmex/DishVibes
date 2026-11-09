@@ -35,21 +35,47 @@
 
 				.cardHeading {
 					.heading {
-						font-size: var(--text-4xl);
+						font-size: var(--text-xl);
+						line-height: var(--text-xl--line-height);
 						font-family: var(--font-heading) sans-serif;
 						font-weight: 900;
 						text-transform: uppercase;
+
+						@variant md {
+							font-size: var(--text-2xl);
+							line-height: var(--text-2xl--line-height);
+						}
+
+						@variant lg {
+							font-size: var(--text-4xl);
+							line-height: var(--text-4xl--line-height);
+						}
+
 						span {
 							color: var(--color-primary);
 						}
 					}
 
 					.description {
-						font-size: var(--text-xl);
+						font-size: var(--text-base);
+						line-height: var(--text-base--line-height);
 						font-family: var(--font-sans) sans-serif;
-						font-weight: 600;
+						font-weight: 500;
 						font-style: italic;
 						color: var(--color-muted-foreground);
+						text-wrap: pretty;
+
+						@variant md {
+							font-weight: 600;
+							font-size: var(--text-lg);
+							line-height: var(--text-lg--line-height);
+						}
+
+						@variant lg {
+							font-weight: 700;
+							font-size: var(--text-xl);
+							line-height: var(--text-xl--line-height);
+						}
 					}
 				}
 
@@ -60,15 +86,21 @@
 					align-items: center;
 
 					.customerServiceIcon {
-						width: 250px;
-						height: 250px;
+						width: 200px;
+						height: 200px;
 						stroke-width: 1.5px;
 						stroke: var(--color-zinc-300);
+
+						@variant lg {
+							width: 250px;
+							height: 250px;
+						}
 					}
 				}
 
 				.cardInfo {
 					display: flex;
+					flex-direction: column;
 					align-items: center;
 					gap: --spacing(2);
 					background-color: --alpha(var(--color-zinc-800) / 60%);
@@ -77,8 +109,17 @@
 					border-radius: var(--radius-md);
 					gap: --spacing(5);
 
+					@variant lg {
+						flex-direction: row;
+					}
+
 					.cardInfoColumnOne {
-						flex: 2;
+						flex: 1;
+
+						@variant lg {
+							flex: 2;
+						}
+
 						.cardHeading {
 							font-size: var(--text-xl);
 							font-weight: 700;
@@ -94,9 +135,12 @@
 
 					.cardInfoColumnTwo {
 						flex: 1;
+						width: 100%;
+						background-color: var(--color-mauve-500);
 
 						.contactLink {
 							display: block;
+							width: 100%;
 							text-align: center;
 							background-color: var(--color-primary);
 							padding-inline: --spacing(6);

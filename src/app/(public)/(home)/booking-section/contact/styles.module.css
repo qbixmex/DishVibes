@@ -6,16 +6,27 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   height: 100%;
-  padding: --spacing(10);
+  padding: --spacing(5);
   display: flex;
   flex-direction: column;
 
+  @variant md {
+    padding: --spacing(10);
+  }
+
   .heading {
-    font-size: var(--text-4xl);
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+    text-wrap: wrap;
     font-family: var(--font-heading);
     font-weight: 900;
     margin-bottom: --spacing(3);
     text-transform: uppercase;
+
+    @variant md {
+      font-size: var(--text-4xl);
+      line-height: var(--text-4xl--line-height);
+    }
 
     span {
       color: var(--color-primary);
@@ -24,44 +35,85 @@
 
   .info {
     flex: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    gap: --spacing(8);
 
     .row {
       display: flex;
       align-items: center;
-      gap: --spacing(8);
+      gap: --spacing(5);
 
-      .iconContainer {
-        width: 70px;
-        height: 70px;
-        background-color: var(--color-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: var(--radius-sm);
+      .columnOne {
+        .iconContainer {
+          width: 50px;
+          height: 50px;
+          background-color: var(--color-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: var(--radius-sm);
 
-        svg {
-          width: 45px;
-          height: 45px;
-          stroke-width: 1.5px;
-          stroke: var(--color-orange-100);
+          @variant md {
+            width: 60px;
+            height: 60px;
+          }
+          
+          @variant lg {
+            width: 70px;
+            height: 70px;
+          }
+  
+          .icon {
+            width: 30px;
+            height: 30px;
+            stroke-width: 1.5px;
+            stroke: var(--color-orange-100);
+
+            @variant md {
+              width: 35px;
+              height: 35px;
+            }
+
+            @variant lg {
+              width: 45px;
+              height: 45px;
+            }
+          }
         }
       }
 
-      .infoHeading {
-        font-size: var(--text-2xl);
-        font-weight: 700;
-        font-family: var(--font-heading);
-      }
-  
-      .contactData {
-        font-size: var(--text-xl);
-        font-weight: 500;
-        font-family: var(--font-sans);
-        color: var(--color-muted-foreground);
-        font-style: italic;
+      .columnTwo {
+        flex: 1;
+
+        .dataHeading {
+          font-size: var(--text-lg);
+          line-height: var(--text-lg--line-height);
+          font-weight: 700;
+          font-family: var(--font-heading);
+
+          @variant md {
+            font-size: var(--text-xl);
+            line-height: var(--text-xl--line-height);
+          }
+
+          @variant lg {
+            font-size: var(--text-2xl);
+            line-height: var(--text-2xl--line-height);
+          }
+        }
+
+        .dataValue {
+          font-size: var(--text-lg);
+          line-height: 1.4rem;
+          text-wrap: balance;
+          font-weight: 500;
+          font-family: var(--font-sans);
+          color: var(--color-muted-foreground);
+          font-style: italic;
+        }
       }
     }
   }

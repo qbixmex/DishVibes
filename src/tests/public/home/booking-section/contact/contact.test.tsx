@@ -47,7 +47,7 @@ describe('Test on <Contact /> component', () => {
     ).toBeVisible();
     expect(
       screen.getByText(
-        '900 Ganville Street, Vancouver, British Columbia',
+        '900 Ganville Street, Vancouver, British Columbia.',
       ),
     ).toBeVisible();
   });

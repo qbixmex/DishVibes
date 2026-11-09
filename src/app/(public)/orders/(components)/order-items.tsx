@@ -11,7 +11,10 @@ export const OrderItems: FC<Props> = ({ lines }) => {
   return (
     <ul className={styles.itemsList}>
       {lines.map((line) => (
-        <li key={line.lineId} className={styles.itemsListItem}>
+        <li
+          key={line.lineId}
+          className={styles.itemsListItem}
+        >
           <DishItem line={line} />
         </li>
       ))}

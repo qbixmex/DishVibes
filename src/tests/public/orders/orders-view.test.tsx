@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react';
 import { OrdersView } from '@/app/(public)/orders/(components)/orders-view';
 import { useOrderStore } from '@/shared/stores/order-store';
 import { createOrderLine, resetOrderStore } from '@/tests/utils/order';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+
+const renderView = (suggestionsSlot: ReactNode = null) =>
+  render(<OrdersView suggestionsSlot={suggestionsSlot} />);
 
 describe('Tests on <OrdersView /> component', () => {
   beforeEach(() => {
@@ -12,7 +15,7 @@ describe('Tests on <OrdersView /> component', () => {
   test('Should render the singular title for a single line', () => {
     useOrderStore.setState({ lines: [createOrderLine()] });
 
-    render(<OrdersView suggestions={[]} />);
+    renderView();
 
     expect(
       screen.getByRole('heading', { level: 1, name: 'Your Order' }),
@@ -27,7 +30,7 @@ describe('Tests on <OrdersView /> component', () => {
       ],
     });
 
-    render(<OrdersView suggestions={[]} />);
+    renderView();
 
     expect(
       screen.getByRole('heading', { level: 1, name: 'Your Orders' }),
@@ -35,7 +38,7 @@ describe('Tests on <OrdersView /> component', () => {
   });
 
   test('Should render the empty state when there are no lines', () => {
-    render(<OrdersView suggestions={[]} />);
+    renderView();
 
     expect(screen.getByTestId('empty-order')).toBeVisible();
     expect(screen.getByText('Your order is empty')).toBeVisible();
@@ -44,7 +47,7 @@ describe('Tests on <OrdersView /> component', () => {
   test('Should render the order lines and the summary', () => {
     useOrderStore.setState({ lines: [createOrderLine()] });
 
-    render(<OrdersView suggestions={[]} />);
+    renderView();
 
     expect(screen.getByText('Pepperoni Pizza')).toBeVisible();
     expect(screen.getByRole('heading', { name: 'Order Summary' })).toBeVisible();
@@ -53,42 +56,22 @@ describe('Tests on <OrdersView /> component', () => {
   test('Should render a skeleton while the order is not hydrated', () => {
     useOrderStore.setState({ hydrated: false });
 
-    const { container } = render(<OrdersView suggestions={[]} />);
+    const { container } = renderView();
 
     expect(
       container.querySelectorAll('[data-slot="skeleton"]').length,
     ).toBeGreaterThan(0);
   });
 
-  test('Should add a suggested drink to the order', async () => {
-    const user = userEvent.setup();
-    const suggestion = {
-      id: 'drink-1',
-      name: 'Coca-Cola',
-      slug: 'coca-cola-drink',
-      imageUrl: '/images/drinks/coca-cola-drink.jpg',
-      description: 'A chilled glass of classic Coca-Cola.',
-      price: 2.5,
-      featured: true,
-      categoryId: 'drinks',
-    };
+  test('Should render the suggestions slot', () => {
+    renderView(<aside data-testid="suggestions-slot" />);
 
-    render(<OrdersView suggestions={[suggestion]} />);
+    expect(screen.getByTestId('suggestions-slot')).toBeVisible();
+  });
 
-    expect(
-      screen.getByRole('heading', { name: 'You might also like' }),
-    ).toBeVisible();
+  test('Should render nothing in place of the suggestions slot by default', () => {
+    renderView();
 
-    await user.click(
-      screen.getByRole('button', { name: 'Add Coca-Cola to your order' }),
-    );
-
-    expect(useOrderStore.getState().lines).toEqual([
-      expect.objectContaining({
-        dishId: 'drink-1',
-        quantity: 1,
-        dish: expect.objectContaining({ name: 'Coca-Cola', price: 2.5 }),
-      }),
-    ]);
+    expect(screen.queryByTestId('suggestions-slot')).not.toBeInTheDocument();
   });
 });

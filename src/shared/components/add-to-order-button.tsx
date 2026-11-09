@@ -4,18 +4,18 @@ import type { ComponentProps, FC, ReactNode } from 'react';
 import { Plus } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
-import type { Dish } from '@/shared/interfaces/dish.interface';
 import { toOrderDishSnapshot, useOrderStore } from '@/shared/stores/order-store';
+import type { OrderDishSnapshot } from '@/shared/interfaces/order.interface';
 
 type Props = Omit<ComponentProps<typeof Button>, 'onClick' | 'children'> &
   Readonly<{
-    dish: Dish;
+    dish: OrderDishSnapshot;
     children: ReactNode;
   }>;
 
 /**
  * Adds one unit of a dish to the order. Shared by the menu cards and the
- * orders page suggestions so the behaviour is the same everywhere.
+ * orders page suggestions so the behavior is the same everywhere.
  */
 export const AddToOrderButton: FC<Props> = ({ dish, children, ...props }) => {
   const addLine = useOrderStore((state) => state.addLine);

@@ -1,7 +1,8 @@
-import type { FC } from 'react';
+import { Suspense, type FC } from 'react';
 import type { Metadata } from 'next';
-import { drinks } from '@/shared/data/drinks';
 import { OrdersView } from './(components)/orders-view';
+import { SuggestionsGrid } from './(components)/suggestions-grid';
+import { SuggestionsSkeleton } from './(components)/suggestions-grid/suggestions-skeleton';
 import styles from './styles.module.css';
 
 export const metadata: Metadata = {
@@ -10,11 +11,15 @@ export const metadata: Metadata = {
 };
 
 const OrdersPage: FC = () => {
-  const suggestions = drinks.slice(0, 3);
-
   return (
     <div className={styles.page}>
-      <OrdersView suggestions={suggestions} />
+      <OrdersView
+        suggestionsSlot={
+          <Suspense fallback={<SuggestionsSkeleton />}>
+            <SuggestionsGrid />
+          </Suspense>
+        }
+      />
     </div>
   );
 };

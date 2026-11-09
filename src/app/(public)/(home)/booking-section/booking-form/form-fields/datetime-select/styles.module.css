@@ -1,0 +1,59 @@
+@reference "#globals";
+
+.dateTime {
+  display: flex;
+  flex-direction: column;
+  gap: --spacing(5);
+
+  .triggerButton {
+    width: 100%;
+    justify-content: space-between;
+    font-weight: 500;
+    border: solid 1px var(--color-border);
+    
+    @variant dark {
+      background-color: --alpha(var(--color-input) / 30%);
+    }
+  }
+
+  .optionalText {
+    font-size: var(--text-sm);
+    line-height: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  @variant md {
+    flex-direction: row;
+  }
+}
+
+.date {
+  flex: 1;
+}
+
+.popOverCalendar {
+  width: auto;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hour {
+  flex: 1;
+
+  input {
+    background-color: var(--color-input);
+    appearance: none;
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      appearance: none;
+    }
+
+    @variant dark {
+      background-color: --alpha(var(--color-input) / 30%);
+    }
+  }
+}

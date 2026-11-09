@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware';
 import type { OrderDishSnapshot, OrderLine } from '@/shared/interfaces/order.interface';
-import type { Dish } from '@/shared/interfaces/dish.interface';
 import {
   MAX_QUANTITY,
   MIN_QUANTITY,
@@ -9,11 +8,10 @@ import {
   ORDER_STORAGE_VERSION,
   PROMO_CODES,
 } from '@/shared/constants/order';
-
 export type AddOrderLineInput = Omit<OrderLine, 'lineId'>;
 
 /** Keeps only the dish fields needed to render an order line. */
-export const toOrderDishSnapshot = (dish: Dish): OrderDishSnapshot => ({
+export const toOrderDishSnapshot = (dish: OrderDishSnapshot): OrderDishSnapshot => ({
   id: dish.id,
   name: dish.name,
   slug: dish.slug,

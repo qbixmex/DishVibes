@@ -9,8 +9,8 @@ import { Button } from '@/components/ui/button';
 import { useBookingForm } from './use-booking-form';
 import { FormProvider } from 'react-hook-form';
 import { cn } from 'cn';
-import styles from './styles.module.css';
 import { Loader2 } from 'lucide-react';
+import styles from './styles.module.css';
 
 export const BookingForm: FC = () => {
   const { form, onSubmit } = useBookingForm();

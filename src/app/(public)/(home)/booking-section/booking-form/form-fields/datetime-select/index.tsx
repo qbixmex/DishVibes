@@ -14,6 +14,7 @@ import {
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import styles from "./styles.module.css";
 
 const YEARS_AHEAD = 10;
 
@@ -79,8 +80,8 @@ export const DateTimeSelect: FC = () => {
         };
 
         return (
-          <section className="flex flex-row gap-5">
-            <Field className="flex-2" data-invalid={fieldState.invalid}>
+          <section className={styles.dateTime}>
+            <Field className={styles.date} data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor={field.name}>Date</FieldLabel>
               <Popover open={openCalendar} onOpenChange={handleCalendarOpenChange}>
                 <PopoverTrigger
@@ -88,7 +89,7 @@ export const DateTimeSelect: FC = () => {
                     <Button
                       id={field.name}
                       variant="secondary"
-                      className="w-[225px] justify-between font-normal"
+                      className={styles.triggerButton}
                       aria-invalid={fieldState.invalid}
                     >
                       {
@@ -97,7 +98,7 @@ export const DateTimeSelect: FC = () => {
                           : (
                             <span>
                               Seleccione Fecha&nbsp;
-                              <span className="text-sm text-gray-500">(optional)</span>
+                              <span className={styles.optionalText}>(optional)</span>
                             </span>
                           )
                       }
@@ -105,7 +106,7 @@ export const DateTimeSelect: FC = () => {
                     </Button>
                   }
                 />
-                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+                <PopoverContent className={styles.popOverCalendar} align="start">
                   <Calendar
                     mode="single"
                     startMonth={new Date(2020, 0)}
@@ -121,7 +122,8 @@ export const DateTimeSelect: FC = () => {
                 <FieldError errors={[fieldState.error]} />
               )}
             </Field>
-            <Field className="flex-1">
+
+            <Field className={styles.hour}>
               <FieldLabel htmlFor="time-picker">Hour</FieldLabel>
               <Input
                 id="time-picker"
@@ -130,7 +132,6 @@ export const DateTimeSelect: FC = () => {
                 min="00:00:00"
                 value={selectedTime}
                 onChange={handleTimeChange}
-                className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
                 aria-invalid={fieldState.invalid}
               />
             </Field>
