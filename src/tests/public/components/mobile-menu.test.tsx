@@ -48,6 +48,18 @@ describe('Test on <MobileMenu /> component', () => {
     }
   });
 
+  test('Should lock the page scroll while the menu is open', async () => {
+    const { user, triggerButton } = renderComponent();
+
+    await user.click(triggerButton);
+
+    expect(document.body).toHaveStyle({ overflow: 'hidden' });
+
+    await user.click(screen.getByRole('button', { name: /close menu/i }));
+
+    expect(document.body.style.overflow).toBe('');
+  });
+
   test('Should navigate and close the menu when a link is clicked', async () => {
     const { user, triggerButton } = renderComponent();
     await user.click(triggerButton);
