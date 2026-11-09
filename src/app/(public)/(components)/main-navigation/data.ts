@@ -16,11 +16,6 @@ export const links: Link[] = [
     label: "About",
   },
   {
-    id: "7cf2ae60-9c3b-40a0-96be-d4ef82678d57",
-    url: "/location",
-    label: "Location",
-  },
-  {
     id: "03fefe84-6a34-4e8d-9407-d36ad1cba896",
     url: "/orders",
     label: "Orders",
