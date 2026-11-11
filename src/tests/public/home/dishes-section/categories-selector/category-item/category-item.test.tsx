@@ -9,12 +9,16 @@ type CategoryFixture = Category & { icon: LucideIcon };
 const featuredCategory: CategoryFixture = {
   id: '1eb02c49',
   name: 'Featured',
+  slug: 'featured',
+  aliases: ['featured'],
   icon: LayoutGrid,
 };
 
 const pizzaCategory: CategoryFixture = {
   id: '4fbe4d4d',
   name: 'Pizza',
+  slug: 'pizza',
+  aliases: ['pizza'],
   icon: Pizza,
 };
 

@@ -1,5 +1,5 @@
 import { MenuCategoriesSelector } from '@/app/(public)/menu/(components)/categories-selector';
-import { categories, firstCategoryId } from '@/shared/data/categories';
+import { categories } from '@/shared/data/categories';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -24,6 +24,7 @@ const categoryByName = (name: string) => {
 
 const pizza = categoryByName('Pizza');
 const burgers = categoryByName('Burgers');
+const featured = categoryByName('Featured');
 
 describe('Test on <MenuCategoriesSelector /> component', () => {
   beforeEach(() => {
@@ -44,6 +45,12 @@ describe('Test on <MenuCategoriesSelector /> component', () => {
     expect(screen.getByText('Pizza')).toHaveClass('text-orange-500');
   });
 
+  test('Should mark the category as selected when the URL uses its slug', () => {
+    render(<MenuCategoriesSelector searchParams={{ category: pizza.slug }} />);
+
+    expect(screen.getByText('Pizza')).toHaveClass('text-orange-500');
+  });
+
   test('Should set the category and reset the page', async () => {
     const user = userEvent.setup();
 
@@ -56,7 +63,7 @@ describe('Test on <MenuCategoriesSelector /> component', () => {
     await user.click(screen.getByText('Burgers'));
 
     expect(mocks.push).toHaveBeenCalledWith(
-      `/menu?category=${burgers.id}&limit=4`,
+      `/menu?category=${burgers.slug}&limit=4`,
       { scroll: false },
     );
   });
@@ -83,7 +90,24 @@ describe('Test on <MenuCategoriesSelector /> component', () => {
     await user.click(screen.getByText('Featured'));
 
     expect(mocks.push).toHaveBeenCalledWith(
-      `/menu?category=${firstCategoryId}`,
+      `/menu?category=${featured.slug}`,
+      { scroll: false },
+    );
+  });
+
+  test('Should clear the search term when selecting a category', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <MenuCategoriesSelector
+        searchParams={{ search: 'cheese', category: pizza.id }}
+      />,
+    );
+
+    await user.click(screen.getByText('Burgers'));
+
+    expect(mocks.push).toHaveBeenCalledWith(
+      `/menu?category=${burgers.slug}`,
       { scroll: false },
     );
   });

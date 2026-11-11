@@ -75,9 +75,53 @@ describe('Test on <MenuDishes /> component', () => {
 
     expect(mocks.getDishesAction).toHaveBeenCalledWith({
       category: 'pizza',
+      search: undefined,
       page: 2,
       take: 4,
     });
+  });
+
+  test('Should forward the search term to the action', async () => {
+    await renderDishes({ search: 'cheese', limit: '4' });
+
+    expect(mocks.getDishesAction).toHaveBeenCalledWith({
+      category: undefined,
+      search: 'cheese',
+      page: 1,
+      take: 4,
+    });
+  });
+
+  test('Should show the search term with a link to clear it', async () => {
+    mocks.getDishesAction.mockResolvedValue({
+      success: true,
+      error: null,
+      dishes: [{ id: '1' }],
+      pagination: { currentPage: 1, totalPages: 1 },
+    });
+
+    await renderDishes({ search: 'cheese', category: 'pizza', limit: '4' });
+
+    expect(screen.getByText('“cheese”')).toBeVisible();
+    expect(screen.getByRole('link', { name: 'Clear search' })).toHaveAttribute(
+      'href',
+      '/menu?category=pizza&limit=4',
+    );
+  });
+
+  test('Should show the action error when there are no dishes', async () => {
+    mocks.getDishesAction.mockResolvedValue({
+      success: false,
+      error: 'There is no dishes matching your search',
+      dishes: [],
+      pagination: null,
+    });
+
+    await renderDishes({ search: 'zzzzzz' });
+
+    expect(
+      screen.getByText('There is no dishes matching your search'),
+    ).toBeVisible();
   });
 
   test('Should default the page and the page size', async () => {
@@ -85,6 +129,7 @@ describe('Test on <MenuDishes /> component', () => {
 
     expect(mocks.getDishesAction).toHaveBeenCalledWith({
       category: 'pizza',
+      search: undefined,
       page: 1,
       take: 8,
     });
@@ -109,6 +154,7 @@ describe('Test on <MenuDishes /> component', () => {
 
     expect(mocks.getDishesAction).toHaveBeenCalledWith({
       category: undefined,
+      search: undefined,
       page: 1,
       take: 2,
     });
