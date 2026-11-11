@@ -32,7 +32,15 @@
 
   .columnRight {
     display: flex;
-    gap: --spacing(5);
+    gap: --spacing(2);
+
+    @variant max-sm {
+      gap: --spacing(1.5);
+    }
+
+    @variant md {
+      gap: --spacing(5);
+    }
   }
 
   @variant md {

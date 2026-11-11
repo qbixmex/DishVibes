@@ -1,8 +1,10 @@
 import { getDishesAction } from '@/app/(public)/menu/(actions)/get-dishes.action';
+import { searchDishes } from '@/lib/dish-search';
 import { dishes } from '@/shared/data/all-dishes';
-import { firstCategoryId } from '@/shared/data/categories';
+import { categories, firstCategoryId } from '@/shared/data/categories';
 
 const categoryId = dishes[0].categoryId;
+const pizzaCategory = categories.find((category) => category.name === 'Pizza');
 const categoryDishes = dishes.filter((dish) => dish.categoryId === categoryId);
 const orderedCategoryDishes = [
   ...categoryDishes.filter((dish) => dish.featured),
@@ -102,6 +104,95 @@ describe('Test on getDishesAction() action', () => {
     expect(result).toEqual({
       success: false,
       error: 'There is no dishes with selected category',
+      dishes: [],
+      pagination: null,
+    });
+  });
+
+  test('Should resolve the category from its slug', async () => {
+    if (!pizzaCategory) throw new Error('Pizza category not found');
+
+    const pizzaDishes = dishes.filter(
+      (dish) => dish.categoryId === pizzaCategory.id,
+    );
+    const orderedPizzaDishes = [
+      ...pizzaDishes.filter((dish) => dish.featured),
+      ...pizzaDishes.filter((dish) => !dish.featured),
+    ];
+
+    const result = await getDishesAction({
+      category: pizzaCategory.slug,
+      page: 1,
+      take: 3,
+    });
+
+    expect(result.dishes).toEqual(orderedPizzaDishes.slice(0, 3));
+    expect(result.pagination).toEqual({
+      currentPage: 1,
+      totalPages: Math.ceil(orderedPizzaDishes.length / 3),
+    });
+  });
+
+  test('Should resolve the featured category from its slug', async () => {
+    const result = await getDishesAction({
+      category: 'featured',
+      page: 1,
+      take: 4,
+    });
+
+    expect(result.dishes).toEqual(featuredDishes.slice(0, 4));
+  });
+
+  test('Should filter the dishes by a search term', async () => {
+    if (!pizzaCategory) throw new Error('Pizza category not found');
+
+    const result = await getDishesAction({
+      search: 'pizza',
+      page: 1,
+      take: 100,
+    });
+
+    expect(result.success).toBe(true);
+    expect(result.dishes).toHaveLength(
+      dishes.filter((dish) => dish.categoryId === pizzaCategory.id).length,
+    );
+    expect(
+      result.dishes.every((dish) => dish.categoryId === pizzaCategory.id),
+    ).toBe(true);
+  });
+
+  test('Should keep the relevance order of the search results', async () => {
+    const result = await getDishesAction({
+      search: 'chicken',
+      page: 1,
+      take: 4,
+    });
+
+    expect(result.dishes).toEqual(searchDishes('chicken').dishes.slice(0, 4));
+  });
+
+  test('Should combine the search term with the category filter', async () => {
+    if (!pizzaCategory) throw new Error('Pizza category not found');
+
+    const expected = searchDishes('cheese').dishes.filter(
+      (dish) => dish.categoryId === pizzaCategory.id,
+    );
+    const result = await getDishesAction({
+      search: 'cheese',
+      category: pizzaCategory.slug,
+      page: 1,
+      take: 100,
+    });
+
+    expect(result.dishes).toEqual(expected);
+  });
+
+  test('Should return an error when the search term has no matches', async () => {
+    const result = await getDishesAction({ search: 'zzzzzz' });
+
+    expect(result).toEqual({
+      success: false,
+      error: 'There is no dishes matching your search',
       dishes: [],
       pagination: null,
     });

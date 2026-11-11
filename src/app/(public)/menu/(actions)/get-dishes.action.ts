@@ -1,8 +1,9 @@
 'use server';
 
 import { dishes } from "@/shared/data/all-dishes";
-import { firstCategoryId } from "@/shared/data/categories";
+import { firstCategoryId, resolveCategory } from "@/shared/data/categories";
 import type { Dish } from "@/shared/interfaces/dish.interface";
+import { searchDishes } from "@/lib/dish-search";
 import { sleep } from '../../../../lib/utils';
 
 type ResponseAction = Promise<{
@@ -51,25 +52,22 @@ const toPositiveInteger = (value: number, fallback: number): number => {
 
 export const getDishesAction = async ({
   category,
+  search,
   page = 1,
   take = 4,
 }: {
   category?: string | null;
+  search?: string | null;
   page?: number,
   take?: number;
 }): ResponseAction => {
   await sleep(1);
   const requestedPage = toPositiveInteger(page, 1);
   const pageSize = toPositiveInteger(take, 4);
+  const searchTerm = search?.trim() ?? '';
+  const resolvedCategory = resolveCategory(category);
 
-  const filteredDishes =
-    category === firstCategoryId
-      ? dishes.filter((dish) => dish.featured)
-      : category
-        ? dishes.filter((dish) => dish.categoryId === category)
-        : dishes;
-
-  if (filteredDishes.length === 0) {
+  if (category && !resolvedCategory) {
     return {
       success: false,
       error: 'There is no dishes with selected category',
@@ -78,9 +76,34 @@ export const getDishesAction = async ({
     };
   }
 
+  const belongsToCategory = (dish: Dish): boolean => {
+    if (!resolvedCategory) return true;
+    if (resolvedCategory.id === firstCategoryId) return dish.featured;
+
+    return dish.categoryId === resolvedCategory.id;
+  };
+
+  const filteredDishes = searchTerm
+    ? searchDishes(searchTerm).dishes.filter(belongsToCategory)
+    : dishes.filter(belongsToCategory);
+
+  if (filteredDishes.length === 0) {
+    return {
+      success: false,
+      error: searchTerm
+        ? 'There is no dishes matching your search'
+        : 'There is no dishes with selected category',
+      dishes: [],
+      pagination: null,
+    };
+  }
+
   // Without a category the whole list is randomized, but featured dishes
   // always come first. With a category the original order is preserved.
-  const orderedDishes = orderDishes(filteredDishes, !category);
+  // Search results keep their relevance order.
+  const orderedDishes = searchTerm
+    ? filteredDishes
+    : orderDishes(filteredDishes, !resolvedCategory);
   const totalPages = Math.ceil(orderedDishes.length / pageSize);
   const currentPage = Math.min(requestedPage, totalPages);
   const start = (currentPage - 1) * pageSize;
