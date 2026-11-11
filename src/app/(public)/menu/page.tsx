@@ -6,6 +6,7 @@ import { DishesSkeleton } from "./(components)/dishes-grid/dishes-skeleton";
 type Props = Readonly<{
   searchParams: Promise<{
     category?: string;
+    search?: string;
     page?: string;
     limit?: string;
   }>;

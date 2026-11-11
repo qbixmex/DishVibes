@@ -8,6 +8,7 @@ import { DishesSkeleton } from "./dishes-grid/dishes-skeleton";
 type Props = Readonly<{
   searchParams: Promise<{
     category?: string;
+    search?: string;
     page?: string;
     limit?: string;
   }>;
@@ -18,6 +19,7 @@ export const MenuView: FC<Props> = async ({ searchParams }) => {
   const resolvedSearchParams = await searchParams;
   const key = [
     resolvedSearchParams.category ?? "",
+    resolvedSearchParams.search ?? "",
     resolvedSearchParams.page ?? "",
     resolvedSearchParams.limit ?? "",
   ].join("|");

@@ -1,68 +1,44 @@
 'use client';
 
 import type { FC } from 'react';
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from 'react-hook-form';
-import { Field, FieldError } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import z from 'zod';
-import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { SearchPanel } from './search-panel';
+import { useSearchDish } from './use-search-dish';
 import styles from './styles.module.css';
 
-const formSchema = z.object({
-  term: z
-    .string('El valor debe ser una cadena de texto')
-    .min(1, 'El termino de búsqueda es obligatorio'),
-});
-
 export const SearchDish: FC = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      term: '',
-    },
-  });
-
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
-    form.clearErrors();
-  };
+  const search = useSearchDish();
 
   return (
-    <div className={styles.formContainer}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className={styles.formGroup}>
-          <div className={styles.inputGroup}>
-            <Controller
-              name="term"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field>
-                  <label htmlFor="term" className="visually-hidden">
-                    Search dishes
-                  </label>
-                  <Input
-                    {...field}
-                    id={field.name}
-                    aria-invalid={fieldState.invalid}
-                    className={styles.input}
-                  />
-                  {fieldState.invalid && (
-                    <FieldError
-                      className={styles.searchErrors}
-                      errors={[fieldState.error]}
-                    />
-                  )}
-                </Field>
-              )}
-            />
-          </div>
-          <Button type="submit" variant="default" aria-label="Search">
-            <Search className={styles.searchIcon} aria-hidden />
-          </Button>
-        </div>
-      </form>
-    </div>
+    <>
+      <div className={styles.formContainer}>
+        <button
+          type="button"
+          className={styles.trigger}
+          onClick={search.openSearch}
+          aria-label="Search the menu"
+          aria-haspopup="dialog"
+        >
+          <Search className={styles.searchIcon} aria-hidden="true" />
+          <span className={styles.triggerText}>Search the menu</span>
+        </button>
+      </div>
+
+      <div className={styles.mobileTrigger}>
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          onClick={search.openSearch}
+          aria-label="Open search"
+          aria-haspopup="dialog"
+        >
+          <Search aria-hidden="true" />
+        </Button>
+      </div>
+
+      <SearchPanel search={search} />
+    </>
   );
 };
