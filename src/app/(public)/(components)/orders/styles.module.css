@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-inline: --spacing(2);
+  margin-inline: 0;
   color: var(--color-foreground);
   text-decoration: none;
   transition: color 150ms ease;
@@ -18,6 +18,10 @@
     outline: 2px solid var(--color-ring);
     outline-offset: --spacing(2);
     border-radius: var(--radius-sm);
+  }
+
+  @variant md {
+    margin-inline: --spacing(2);
   }
 }
 

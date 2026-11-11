@@ -38,12 +38,24 @@
   span {
     font-family: var(--font-heading), Arial, sans-serif;
     font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    text-wrap: nowrap;
+    letter-spacing: var(--tracking-tight);
     font-weight: 700;
     text-transform: uppercase;
-    
+
+    @variant md {
+      letter-spacing: var(--tracking-normal);
+    }
+
     @variant xl {
       font-size: var(--text-xl);
       font-weight: 900;
+    }
+
+    /* Below 360px the wordmark would push the header actions off-screen. */
+    @variant max-[359px] {
+      display: none;
     }
   }
 }
